@@ -23,21 +23,16 @@ body {
   color: #e8edf4;
   font-size: 11px;
   line-height: 1.45;
-  padding: 0 16px 16px;
+  padding: 16px;
 }
 
-.wrapper {
-  max-width: 860px;
-  margin: 16px auto;
-  padding: 0 14px;
-  border-radius: 10px;
-  overflow: visible;
-}
+.wrapper { max-width: 860px; margin: 0 auto; }
 
 /* ── HEADER ── */
 .header {
   background: #CE1126;
   padding: 13px 20px;
+  margin: 0 0 0 0;
   display: flex; align-items: center; gap: 14px;
   border-radius: 10px 10px 0 0;
 }
@@ -61,7 +56,7 @@ body {
 
 /* ── INFO BAR ── */
 .info-bar {
-  background: #0d1520; padding: 8px 20px;
+  background: #0d1520; padding: 8px 20px; margin: 0;
   display: flex; align-items: center; justify-content: space-between;
   font-size: 10px; color: #94a3b8;
   border-bottom: 1px solid #1e2f42;
@@ -230,15 +225,30 @@ body {
 .footer {
   background:#0a101a; border-top:1px solid #1a2a3d;
   padding:8px 20px; margin-top:4px;
-  text-align:center;
-  border-radius: 0 0 10px 10px;
+  text-align:center; border-radius: 0 0 10px 10px;
 }
 .ft { font-size:8px; color:#3a5070; }
+
+@media (max-width: 600px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .two-col   { grid-template-columns: 1fr; }
+  .stat-num  { font-size: 26px; }
+  .stat-lbl  { font-size: 7px; }
+  .stat-tile { padding: 10px; }
+  .header-title { font-size: 13px; }
+  .header-sub   { font-size: 8.5px; }
+  .delivery-pill { display: none; }
+  .info-bar { flex-wrap: wrap; gap: 4px; }
+  .ib-sep   { display: none; }
+  .week-badge { font-size: 8px; }
+  .prog-pct { font-size: 16px; }
+}
 
 @media print {
   @page { margin:0; size:letter portrait; }
   body { background:#0d1520 !important; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
-  .page { padding:10px 14px; }
+  .page { padding:10px 0; }
+}
 }
 </style>
 </head>
@@ -576,13 +586,13 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="two-col">
 
     <!-- LEFT: Key Dates -->
-    <div class="card" style="margin:0;">
+    <div class="card" style="margin:0 0 0 0;">
       <div class="card-hdr">Key Project Dates</div>
       <div id="key-dates"></div>
     </div>
 
     <!-- RIGHT: Work Items -->
-    <div class="card" style="margin:0;">
+    <div class="card" style="margin:0 0 0 0;">
       <div class="wk-hdr" id="tw-hdr"></div>
       <div id="tw-body"></div>
       <div class="wi-div"></div>
