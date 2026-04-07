@@ -3,366 +3,616 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tenant Construction Dashboard</title>
+<title>Chipotle Rita Ranch II — Construction Dashboard</title>
+<meta property="og:title" content="Chipotle Rita Ranch II — Construction Dashboard">
+<meta property="og:description" content="Weekly Progress Report · Old Vail AZ Development Group LLC · DG Fenn Construction">
+<meta property="og:type" content="website">
 <style>
-:root { --brand: #CE1126; }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a1628;color:#e2e8f0;padding:20px;min-height:100vh}
-.wrap{max-width:1100px;margin:0 auto}
-.hdr{background:#1a1a1a;border-radius:12px;padding:0;margin-bottom:16px;overflow:hidden;border:1px solid #2a2a2a}
-.hdr-top{background:var(--brand);padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.hdr-logo{display:flex;align-items:center;gap:14px}
-.logo-circle{width:48px;height:48px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-text{font-size:9px;font-weight:900;color:var(--brand);letter-spacing:.04em;text-align:center;line-height:1.2}
-.hdr-name{font-size:19px;font-weight:700;color:#fff;letter-spacing:.01em}
-.hdr-store{font-size:11px;color:rgba(255,255,255,.75);margin-top:2px}
-.hdr-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap}
-.hdr-bot{padding:12px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:#111}
-.hdr-meta{font-size:11px;color:#daeeff}
-.hdr-meta span{color:#e2e8f0;font-weight:500}
-.week-badge{background:#162847;border:1px solid #2E5FA3;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:600;color:#CADCFC}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.sc{background:#111d2e;border:1px solid #1e3a5f;border-radius:10px;padding:14px 16px;text-align:center}
-.sc-lbl{font-size:10px;color:#daeeff;text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:6px}
-.sc-val{font-size:26px;font-weight:700;color:#fff;line-height:1}
-.sc-sub{font-size:10px;color:#a8c8e8;margin-top:4px}
-.sc-accent{border-top:3px solid var(--brand)}
-.sc-green{border-top:3px solid #16a34a}
-.sc-blue{border-top:3px solid #2E5FA3}
-.sc-orange{border-top:3px solid #d97706}
-.overall{background:#111d2e;border:1px solid #1e3a5f;border-radius:10px;padding:16px 20px;margin-bottom:16px}
-.ov-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.ov-title{font-size:12px;font-weight:700;color:#daeeff;text-transform:uppercase;letter-spacing:.06em}
-.ov-pct{font-size:22px;font-weight:700;color:var(--brand)}
-.ov-bar-bg{background:#0a1628;border-radius:6px;height:14px;overflow:hidden;margin-bottom:6px}
-.ov-bar-fill{height:100%;border-radius:6px;background:var(--brand);transition:width .5s}
-.ov-milestones{display:flex;justify-content:space-between;margin-top:8px;margin-bottom:10px}
-.ov-ms{text-align:center}
-.ov-ms-dot{width:10px;height:10px;border-radius:50%;margin:0 auto 3px;border:2px solid}
-.ov-ms-done{background:#16a34a;border-color:#16a34a}
-.ov-ms-active{background:#d97706;border-color:#d97706}
-.ov-ms-pending{background:transparent;border-color:#2E5FA3}
-.ov-ms-lbl{font-size:9px;color:#daeeff;white-space:nowrap}
-.ov-ms-date{font-size:9px;color:#a8c8e8}
-.variance-bar{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;border:1px solid;margin-top:2px}
-.variance-bar.ahead{background:#0d2e1a;border-color:#16a34a}
-.variance-bar.on-track{background:#162847;border-color:#60a5fa}
-.variance-bar.behind{background:#2e0d0d;border-color:var(--brand)}
-.v-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.ahead .v-dot{background:#16a34a}
-.on-track .v-dot{background:#93c5fd}
-.behind .v-dot{background:var(--brand)}
-.v-status{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
-.ahead .v-status{color:#4ade80}
-.on-track .v-status{color:#e0f0ff}
-.behind .v-status{color:#f87171}
-.v-detail{font-size:11px;color:#a8c8e8}
-.v-sep{color:#2E5FA3;margin:0 4px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
-.card{background:#111d2e;border:1px solid #1e3a5f;border-radius:10px;padding:16px}
-.card-title{font-size:10px;font-weight:700;color:#daeeff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.bdg{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600}
-.b-grn{background:#1a4d2e;color:#4ade80}
-.b-red{background:#4d1a1a;color:var(--brand)}
-.b-yel{background:#4a3200;color:#fbbf24}
-.b-blu{background:#0c2a4d;color:#93c5fd}
-.b-gry{background:#1e3a5f;color:#daeeff}
-.date-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1a2f4a}
-.date-row:last-child{border-bottom:none}
-.date-name{font-size:12px;color:#e2e8f0;font-weight:500}
-.date-sub{font-size:10px;color:#a8c8e8;margin-top:1px}
-.cd-wrap{text-align:right;flex-shrink:0;margin-left:12px}
-.cd-num{font-size:16px;font-weight:700}
-.cd-lbl{font-size:10px;color:#a8c8e8}
-.cd-grn{color:#4ade80}.cd-org{color:#fbbf24}.cd-red{color:var(--brand)}.cd-wht{color:#e2e8f0}.cd-blu{color:#93c5fd}
-.sched-full{background:#111d2e;border:1px solid #1e3a5f;border-radius:10px;padding:16px 20px;margin-bottom:16px}
-.phase-item{margin-bottom:14px}
-.phase-item:last-child{margin-bottom:0}
-.phase-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
-.phase-name{font-size:12px;font-weight:600;color:#e2e8f0}
-.phase-dates{font-size:10px;color:#a8c8e8}
-.phase-right{display:flex;align-items:center;gap:10px}
-.phase-pct{font-size:12px;color:#daeeff;min-width:36px;text-align:right}
-.bar-bg{background:#0a1628;border-radius:4px;height:9px;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px;transition:width .4s}
-.bar-grn{background:#16a34a}.bar-org{background:#d97706}.bar-blu{background:#2563eb}.bar-red{background:var(--brand)}.bar-gry{background:#2E5FA3;opacity:.3}
-.phase-note{font-size:10px;color:#a8c8e8;margin-top:3px;font-style:italic}
-.phase-divider{height:1px;background:#1a2f4a;margin:10px 0}
-.week-item{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #1a2f4a}
-.week-item:last-child{border-bottom:none}
-.week-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px}
-.week-txt{font-size:12px;color:#e2e8f0;line-height:1.4}
-.week-cat{font-size:10px;color:#a8c8e8;margin-top:1px}
-.info-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1a2f4a;font-size:12px}
-.info-row:last-child{border-bottom:none}
-.info-lbl{color:#daeeff;font-weight:500}
-.info-val{color:#e2e8f0;text-align:right}
-.footer{text-align:center;font-size:10px;color:#7aaad0;padding:10px 0 4px;border-top:1px solid #1a2f4a;margin-top:4px}
-.print-header{display:none}
-@media print{
-  @page{margin:0}
-  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important}
-  body{background:#0a1628 !important;padding:0.45in 0.45in 0.4in;font-size:11px}
-  .wrap{max-width:100%}
-  .print-header{display:flex !important;justify-content:space-between;align-items:flex-end;padding-bottom:10px;margin-bottom:14px;border-bottom:2px solid var(--brand)}
-  .ph-left{font-size:13px;font-weight:700;color:#e2e8f0}
-  .ph-right{font-size:10px;color:#daeeff;text-align:right;line-height:1.5}
-  .phase-item{page-break-inside:avoid;break-inside:avoid}
-  .date-row{page-break-inside:avoid;break-inside:avoid}
-  .week-item{page-break-inside:avoid;break-inside:avoid}
-  .info-row{page-break-inside:avoid;break-inside:avoid}
-  .phase-name{page-break-after:avoid;break-after:avoid}
+/* ============================================================
+   v3 | Updated: 2026-04-04 | Updated by: BC
+   EDIT ONLY THE PROJECT {} CONFIG BLOCK.
+   DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
+============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0d1520;
+  color: #e8edf4;
+  font-size: 11px;
+  line-height: 1.45;
+  padding: 0 16px 16px;
 }
-@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+
+.wrapper {
+  max-width: 860px;
+  margin: 16px auto;
+  padding: 0 14px;
+  border-radius: 10px;
+  overflow: visible;
+}
+
+/* ── HEADER ── */
+.header {
+  background: #CE1126;
+  padding: 13px 20px;
+  display: flex; align-items: center; gap: 14px;
+  border-radius: 10px 10px 0 0;
+}
+.logo-circle {
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: #a50e1e;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-circle span { font-size: 8px; font-weight: 900; color: white; display: block; line-height: 1.2; }
+.header-info { flex: 1; }
+.header-title { font-size: 18px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+.header-sub { font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+.delivery-pill {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: 10px; font-weight: 700; color: white; white-space: nowrap;
+}
+
+/* ── INFO BAR ── */
+.info-bar {
+  background: #0d1520; padding: 8px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 10px; color: #94a3b8;
+  border-bottom: 1px solid #1e2f42;
+}
+.info-bar strong { color: #e2e8f0; }
+.ib-sep { color: #2a3f5a; margin: 0 8px; }
+.week-badge {
+  background: #1d3557; color: white; border-radius: 4px;
+  padding: 3px 10px; font-size: 9px; font-weight: 700;
+}
+
+/* ── PAGE ── */
+.page { padding: 10px 0; }
+
+/* ── STAT GRID ── */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 10px; }
+.stat-tile {
+  background: #162032; border: 1px solid #243349; border-radius: 8px;
+  padding: 14px 16px; text-align: center;
+}
+.stat-tile.acc-red   { border-top: 3px solid #CE1126; }
+.stat-tile.acc-blue  { border-top: 3px solid #3b82f6; }
+.stat-tile.acc-green { border-top: 3px solid #22c55e; }
+.stat-tile.acc-org   { border-top: 3px solid #f59e0b; }
+.stat-lbl { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #7b90ab; }
+.stat-num { font-size: 36px; font-weight: 900; letter-spacing: -1px; line-height: 1; margin: 4px 0 2px; }
+.stat-num.c-red   { color: #CE1126; }
+.stat-num.c-blue  { color: #7dd3fc; }
+.stat-num.c-green { color: #22c55e; }
+.stat-num.c-org   { color: #f59e0b; }
+.stat-sub { font-size: 9px; color: #4a607a; }
+
+/* ── CARD ── */
+.card {
+  background: #162032; border: 1px solid #243349; border-radius: 8px;
+  overflow: hidden; margin: 0 0 10px;
+}
+.card-hdr {
+  padding: 8px 16px; font-size: 8.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.8px; color: #7b90ab;
+  border-bottom: 1px solid #243349;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.card-hdr-right { font-size: 8px; font-weight: 600; color: #4a607a; text-transform: none; letter-spacing: 0; }
+
+/* ── PROGRESS ── */
+.prog-wrap { padding: 14px 16px 10px; }
+.prog-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.prog-title { font-size: 11px; font-weight: 700; color: #7b90ab; text-transform: uppercase; letter-spacing: 0.6px; }
+.prog-pct { font-size: 22px; font-weight: 900; color: #CE1126; }
+.prog-track { height: 10px; background: #1e3050; border-radius: 5px; overflow: hidden; position: relative; }
+.prog-fill { height: 100%; border-radius: 5px; }
+.prog-fill.p-red { background: #CE1126; }
+.prog-fill.p-dim { background: #2a3f5a; }
+.prog-tick { position: absolute; top:0; bottom:0; width: 2px; background: rgba(255,255,255,0.25); display:none; }
+.prog-meta { display: flex; justify-content: space-between; margin-top: 5px; font-size: 9px; color: #4a607a; }
+
+/* ── MILESTONES ── */
+.ms-row {
+  display: flex; padding: 6px 16px 12px;
+  position: relative;
+}
+.ms-row::before {
+  content:''; position:absolute; left:30px; right:30px; top:13px;
+  height:2px; background:#1e3050; z-index:0;
+}
+.ms-item { flex:1; display:flex; flex-direction:column; align-items:center; position:relative; z-index:1; }
+.ms-dot { width:14px; height:14px; border-radius:50%; }
+.ms-dot.done    { background:#22c55e; }
+.ms-dot.active  { background:#f59e0b; }
+.ms-dot.pending { background:transparent; border:2px solid #3b82f6; }
+.ms-lbl { font-size:7.5px; color:#4a607a; text-align:center; margin-top:4px; max-width:60px; line-height:1.2; }
+.ms-dt  { font-size:7px;   color:#334f6a; text-align:center; }
+
+/* ── VARIANCE ── */
+.variance-wrap {
+  margin: 0 16px 12px; border-radius:5px; padding:7px 12px;
+  display:flex; align-items:center; gap:8px;
+}
+.vw-behind { background:rgba(239,68,68,0.1);  border:1px solid rgba(239,68,68,0.25); }
+.vw-on     { background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.25); }
+.vw-ahead  { background:rgba(34,197,94,0.1);  border:1px solid rgba(34,197,94,0.25); }
+.vw-pre    { background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18); }
+.v-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.vw-behind .v-dot { background:#ef4444; }
+.vw-on     .v-dot { background:#3b82f6; }
+.vw-ahead  .v-dot { background:#22c55e; }
+.vw-pre    .v-dot { background:#3b82f6; }
+.v-lbl { font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
+.vw-behind .v-lbl { color:#ef4444; }
+.vw-on     .v-lbl { color:#7dd3fc; }
+.vw-ahead  .v-lbl { color:#22c55e; }
+.vw-pre    .v-lbl { color:#93c5fd; }
+.v-sep { color:#2a3f5a; margin:0 4px; }
+.v-detail { font-size:9px; color:#4a607a; }
+
+/* ── TWO-COLUMN MID ── */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin: 0 0 10px; }
+
+/* ── KEY DATES ── */
+.kd-row {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:9px 16px; border-bottom:1px solid #1a2a3d;
+}
+.kd-row:last-child { border-bottom:none; }
+.kd-name { font-size:10px; font-weight:600; color:#e8edf4; }
+.kd-name.hi { color:white; font-weight:800; }
+.kd-sub  { font-size:8.5px; color:#4a607a; margin-top:1px; }
+.kd-num  { font-size:22px; font-weight:900; line-height:1; text-align:right; }
+.kd-unit { font-size:8px; color:#4a607a; text-align:right; }
+.kd-done { font-size:10px; font-weight:700; color:#22c55e; }
+
+/* ── WORK ITEMS ── */
+.wk-hdr {
+  padding:9px 16px 4px;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.7px; color:#4a607a;
+}
+.wk-badge {
+  border-radius:4px; padding:2px 9px;
+  font-size:8px; font-weight:700; letter-spacing:0.3px;
+}
+.wk-badge.green { background:#16a34a; color:white; }
+.wk-badge.blue  { background:#1d4ed8; color:white; }
+.wi-row { display:flex; align-items:flex-start; gap:9px; padding:5px 16px; }
+.wi-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; margin-top:3px; }
+.wi-text { font-size:9.5px; color:#e8edf4; line-height:1.35; }
+.wi-tag  { font-size:8px; color:#4a607a; display:block; margin-top:1px; }
+.wi-div  { height:1px; background:#1a2a3d; margin:5px 0; }
+
+/* ── PHASES ── */
+.ph-block { border-bottom:1px solid #1a2a3d; padding:11px 16px 13px; }
+.ph-block:last-child { border-bottom:none; }
+.ph-top { display:flex; justify-content:space-between; align-items:flex-start; }
+.ph-name { font-size:10.5px; font-weight:700; color:#e8edf4; }
+.ph-right { display:flex; align-items:center; gap:7px; flex-shrink:0; }
+.ph-badge {
+  font-size:7.5px; font-weight:700; padding:3px 9px; border-radius:20px;
+}
+.b-complete { background:#1a4731; color:#4ade80; border:1px solid #166534; }
+.b-progress { background:#4a2d0a; color:#fbbf24; border:1px solid #92400e; }
+.b-upcoming { background:#1e3a5f; color:#bfdbfe; border:1px solid #3b82f6; }
+.b-notstart { background:#1e2a38; color:#64748b; border:1px solid #2a3a4a; }
+.ph-pct { font-size:14px; font-weight:900; }
+.ph-meta { font-size:8.5px; color:#4a607a; margin:3px 0 7px; line-height:1.4; }
+.ph-bar-track { height:6px; background:#1e3050; border-radius:3px; overflow:hidden; }
+.ph-bar { height:100%; border-radius:3px; min-width:3px; }
+.pb-grn { background:#22c55e; }
+.pb-org { background:#f59e0b; }
+.pb-blu { background:#3b82f6; }
+.pb-pur { background:#a855f7; }
+.pb-yel { background:#eab308; }
+.pb-gry { background:#94a3b8; }
+.pb-dim { background:#2a3f5a; }
+.ph-note { font-size:8px; color:#4a607a; font-style:italic; margin-top:5px; }
+
+/* ── PROJECT INFO ── */
+.pi-grid { display:grid; grid-template-columns:1fr 1fr; padding:6px 0; }
+.pi-cell { padding:7px 16px; border-bottom:1px solid #1a2a3d; }
+.pi-grid > .pi-cell:nth-last-child(-n+2) { border-bottom:none; }
+.pi-lbl { font-size:8.5px; color:#7b90ab; font-weight:600; margin-bottom:2px; }
+.pi-val { font-size:10px; font-weight:600; color:#e8edf4; }
+.pi-val.hi { color:#CE1126; font-weight:700; }
+
+/* ── FOOTER ── */
+.footer {
+  background:#0a101a; border-top:1px solid #1a2a3d;
+  padding:8px 20px; margin-top:4px;
+  text-align:center;
+  border-radius: 0 0 10px 10px;
+}
+.ft { font-size:8px; color:#3a5070; }
+
+@media print {
+  @page { margin:0; size:letter portrait; }
+  body { background:#0d1520 !important; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .page { padding:10px 14px; }
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="print-header" id="print-header">
-  <div class="ph-left" id="ph-name">—</div>
-  <div class="ph-right">Weekly Construction Progress Report<br><span id="ph-date">—</span></div>
-</div>
-<div class="hdr">
-  <div class="hdr-top">
-    <div class="hdr-logo">
-      <div class="logo-circle"><div class="logo-text" id="logo-text">—</div></div>
-      <div>
-        <div class="hdr-name" id="hdr-name">—</div>
-        <div class="hdr-store" id="hdr-store">—</div>
-      </div>
-    </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <span class="hdr-badge" id="shell-badge">—</span>
-    </div>
-  </div>
-  <div class="hdr-bot">
-    <div class="hdr-meta">Landlord: <span id="landlord">—</span> &nbsp;|&nbsp; GC: <span id="gc">—</span> &nbsp;|&nbsp; Updated: <span id="today-date"></span></div>
-    <div class="week-badge" id="week-badge">—</div>
-  </div>
-</div>
-<div class="stats">
-  <div class="sc sc-accent"><div class="sc-lbl">Days to Shell Delivery</div><div class="sc-val" id="days-shell">--</div><div class="sc-sub" id="shell-sub">—</div></div>
-  <div class="sc sc-blue"><div class="sc-lbl">Days to TI Start</div><div class="sc-val" id="days-ti">--</div><div class="sc-sub" id="ti-sub">—</div></div>
-  <div class="sc sc-green"><div class="sc-lbl">Shell % Complete</div><div class="sc-val" id="shell-pct">—</div><div class="sc-sub" id="shell-days">—</div></div>
-  <div class="sc sc-orange"><div class="sc-lbl">Framing Starts In</div><div class="sc-val" id="days-frame">--</div><div class="sc-sub" id="frame-sub">—</div></div>
-</div>
-<div class="overall">
-  <div class="ov-hdr"><span class="ov-title">Overall Shell Construction Progress</span><span class="ov-pct" id="ov-pct">—</span></div>
-  <div class="ov-bar-bg"><div class="ov-bar-fill" id="ov-bar" style="width:0%"></div></div>
-  <div class="ov-milestones" id="ov-milestones"></div>
-  <div class="variance-bar" id="variance-bar">
-    <div class="v-dot"></div>
-    <span class="v-status" id="v-status">—</span>
-    <span class="v-sep">|</span>
-    <span class="v-detail" id="v-detail">—</span>
-  </div>
-</div>
-<div class="grid2">
-  <div class="card"><div class="card-title">Key Project Dates</div><div id="key-dates"></div></div>
-  <div>
-    <div class="card" style="margin-bottom:14px">
-      <div class="card-title">Work Completed This Week <span class="bdg b-grn" id="this-week-badge">—</span></div>
-      <div id="this-week"></div>
-    </div>
-    <div class="card">
-      <div class="card-title">Planned Work — Next 2 Weeks <span class="bdg b-blu" id="next-weeks-badge">—</span></div>
-      <div id="next-weeks"></div>
-    </div>
-  </div>
-</div>
-<div class="sched-full">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-    <span style="font-size:11px;font-weight:700;color:#daeeff;text-transform:uppercase;letter-spacing:.06em">Construction Schedule by Phase</span>
-    <span style="font-size:10px;color:#a8c8e8" id="sched-label">—</span>
-  </div>
-  <div id="phases"></div>
-</div>
-<div class="card" style="margin-bottom:16px">
-  <div class="card-title">Project Information</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 40px">
-    <div id="info-left"></div>
-    <div id="info-right"></div>
-  </div>
-</div>
-<div class="footer" id="footer">—</div>
-</div>
 
 <script>
 // ============================================================
-// PROJECT DATA CONFIG
-// v1 | Updated: 04/04/2026 | Updated by: —
-//
-// ► THIS IS THE ONLY BLOCK YOU NEED TO EDIT EACH WEEK ◄
+// PROJECT CONFIG — UPDATE THIS BLOCK EACH WEEK ONLY
 // ============================================================
-const PROJECT = {
-  brandColor:    '#CE1126',
-  tenantName:    'Chipotle Mexican Grill',
-  projectName:   'Rita Ranch II',
-  logoLines:     'CMG\nRITA\nRANCH',
-  location:      'Tucson, Arizona',
-  storeNo:       '02-6133',
+const P = {
+
+  tenant:        'Chipotle Mexican Grill',
+  storeNo:       'Store No. 02-6133',
+  project:       'Rita Ranch II',
   center:        'Houghton Town Center',
+  address:       'Tucson, Arizona',
   landlord:      'Old Vail AZ Development Group LLC',
   gc:            'DG Fenn Construction',
-  reportEmail:   'reports@oldvailaz.com',
+  logoLines:     ['CMG','RITA','RANCH'],
+  totalWeeks:    26,
+
   contractStart: '2026-04-13',
-  contractEnd:   '2026-08-07',
+  certCompletion:'2026-08-07',
   contractDays:  85,
-  shellDelivery: '2026-08-07',
-  tiStart:       '2026-06-03',
-  framingStart:  '2026-05-22',
-  shellPct:       0,
-  shellDayCur:    0,
-  shellDayTotal:  85,
+  ldRate:        '$1,300/day',
+  tiAllowance:   '$60,815',
+
+  // ── Progress (update weekly) ──
+  shellPct:      0,
+  shellDayCur:   0,
   scheduledPct:  0,
-  varianceDays:  0,
+  varianceDays:  0,    // + ahead, - behind; 0 with day 0 = pre-construction
+
+  // ── Milestones ──
+  // status: 'done' | 'active' | 'pending'
   milestones: [
-    { label: 'NTP / Mobilize',  date: '04/13/26', status: 'pending' },
-    { label: 'Foundation',      date: '04/22/26', status: 'pending' },
-    { label: 'Slab on Grade',   date: '05/21/26', status: 'pending' },
-    { label: 'Framing',         date: '05/22/26', status: 'pending' },
-    { label: 'Shell Enclosed',  date: '06/19/26', status: 'pending' },
-    { label: 'Meter Set',       date: '06/03/26', status: 'pending' },
-    { label: 'CO / Shell',      date: '08/07/26', status: 'pending' },
+    { label:'Mobilization',          date:'4/13',  status:'pending' },
+    { label:'Foundation\nComplete',  date:'5/21',  status:'pending' },
+    { label:'Framing\nStart',        date:'5/22',  status:'pending' },
+    { label:'Shell\nEnclosed',       date:'6/19',  status:'pending' },
+    { label:'Site\nComplete',        date:'7/31',  status:'pending' },
+    { label:'Cert of\nCompletion',   date:'8/7',   status:'pending' },
   ],
+
+  // ── Key dates (left column) ──
   keyDates: [
-    { name: 'NTP / Construction Start',       sub: 'Mobilization — 04/13/2026',           date: '2026-04-13', colorClass: 'cd-org'             },
-    { name: 'Structural Framing Start',       sub: 'Set steel columns — 05/22/2026',       date: '2026-05-22', colorClass: 'cd-org'             },
-    { name: 'Slab on Grade Pour',             sub: 'Edge ribbon pour — 05/21/2026',        date: '2026-05-21', colorClass: 'cd-org'             },
-    { name: 'Meter Set / Power On',           sub: '06/03/2026',                           date: '2026-06-03', colorClass: 'cd-wht'             },
-    { name: 'Building Enclosed / Watertight', sub: 'TPO roof complete — 06/19/2026',       date: '2026-06-19', colorClass: 'cd-wht'             },
-    { name: 'TI Early Access',                sub: 'Meter set + 1 day — 06/03/2026',       date: '2026-06-03', colorClass: 'cd-blu'             },
-    { name: 'Cert of Completion',             sub: '08/07/2026',                           date: '2026-08-07', colorClass: 'cd-wht'             },
-    { name: 'Early Shell Delivery',               sub: '08/07/2026 — Cert of Completion',  date: '2026-08-07', colorClass: 'cd-red', bold: true },
+    { label:'Structural Framing Start',        sub:'Above-ground construction begins',   date:'2026-05-22', color:'#f59e0b', bold:false },
+    { label:'Slab on Grade Pour',              sub:'04/21/2026',                          date:'2026-04-21', color:'#7dd3fc', bold:false },
+    { label:'Building Enclosed / Watertight',  sub:'Est. 06/19/2026',                    date:'2026-06-19', color:'#7b90ab', bold:false },
+    { label:'Meter Set / Power On',            sub:'06/03/2026',                          date:'2026-06-03', color:'#7b90ab', bold:false },
+    { label:'Cert of Completion',              sub:'08/07/2026',                          date:'2026-08-07', color:'#7b90ab', bold:false },
+    { label:'Shell Delivery',                  sub:'08/07/2026',                          date:'2026-08-07', color:'#CE1126', bold:true  },
   ],
-  thisWeekLabel: 'Week of 04/06',
+
+  // ── This week ──
+  thisWeekLabel: 'Week of 03/29',
   thisWeek: [
-    { text: 'NTP issued — construction start April 13',     cat: 'Pre-Construction', color: '#16a34a' },
-    { text: 'Permit set and civil plans distributed to GC', cat: 'Pre-Construction', color: '#16a34a' },
-    { text: 'GC pre-construction meeting scheduled',        cat: 'Pre-Construction', color: '#d97706' },
+    { text:'NTP issued to DG Fenn Construction',              tag:'Procurement',  color:'#22c55e' },
+    { text:'Pre-construction meeting held with Glenn Turney', tag:'Admin',        color:'#22c55e' },
+    { text:'Permit set and civil plans distributed to GC',    tag:'Permitting',   color:'#22c55e' },
   ],
-  nextWeeksLabel: '04/13 – 04/24',
+
+  // ── Next 2 weeks ──
+  nextWeeksLabel: '04/05 – 04/19',
   nextWeeks: [
-    { text: 'Mobilization — fencing, erosion control, temp facilities', cat: 'Sitework · 04/13',        color: '#2563eb' },
-    { text: 'Survey and staking',                                        cat: 'Sitework · 04/14',        color: '#2563eb' },
-    { text: 'Clear and grub / earthwork',                                cat: 'Sitework · 04/15–04/16',  color: '#2563eb' },
-    { text: 'Over-excavation building pad / certified pad',              cat: 'Foundation · 04/17–04/21',color: '#2563eb' },
-    { text: 'Layout and dig building footings',                          cat: 'Foundation · 04/22–04/23',color: '#9333ea' },
+    { text:'Mobilization — fencing, SWPPP, temp facilities',   tag:'Site · 4/13',  color:'#7dd3fc' },
+    { text:'Survey and staking',                               tag:'Site · 4/14',  color:'#7dd3fc' },
+    { text:'Clear and grub / earthwork',                       tag:'Site · 4/15',  color:'#7dd3fc' },
+    { text:'Over-excavation — certified building pad',         tag:'Site · 4/17',  color:'#7dd3fc' },
+    { text:'Set structural steel columns — framing begins',    tag:'Structural · 4/10', color:'#a855f7' },
   ],
+
+  // ── Phases (no task lists — summary only) ──
   phases: [
     {
-      name:'Phase 1 — Mobilization & Site Prep',
-      dates:'04/13/2026 – 04/16/2026',
-      scope:'Permit, mobilize, survey & staking, clear & grub, earthwork',
-      statusLabel:'Not Started', statusBadge:'b-gry', pct:0, barClass:'bar-gry',
-      note:'NTP issued — construction start April 13, 2026',
+      name: 'Phase 1 — Mobilization & Site Prep',
+      dates: '04/13/2026 – 04/21/2026',
+      scope: 'Permit, mobilize, survey, earthwork, over-excavation',
+      pct: 0, badge:'b-upcoming', badgeLabel:'Upcoming',
+      barClass:'pb-grn', pctColor:'#22c55e', note: null,
     },
     {
-      name:'Phase 2 — Underground Utilities & Foundation',
-      dates:'04/17/2026 – 05/21/2026',
-      scope:'Over-excavation, fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab on grade',
-      statusLabel:'Not Started', statusBadge:'b-gry', pct:0, barClass:'bar-gry',
-      note:'Footing rebar inspection 04/28 · Stem rebar inspection 05/04 · Pre-slab inspection 05/20',
+      name: 'Phase 2 — Underground Utilities & Foundation',
+      dates: '04/22/2026 – 05/15/2026',
+      scope: 'Fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab',
+      pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
+      barClass:'pb-org', pctColor:'#f59e0b', note: null,
     },
     {
-      name:'Phase 3 — Structural Frame & Building Enclosure',
-      dates:'05/22/2026 – 07/02/2026',
-      scope:'Steel columns, rough carpentry, metal deck, roof framing, TPO roof, exterior membrane, storefront, EIFS, brick veneer, drywall',
-      statusLabel:'Not Started', statusBadge:'b-gry', pct:0, barClass:'bar-gry',
-      note:'Pre-drywall inspection 06/18 · Building enclosed / watertight 06/19',
+      name: 'Phase 3 — Structural Frame & Building Enclosure',
+      dates: '04/30/2026 – 07/02/2026',
+      scope: 'Steel columns, framing, roof, exterior membrane, storefront, EIFS, MEP rough-in',
+      pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
+      barClass:'pb-blu', pctColor:'#7dd3fc',
+      note: 'Structural framing starts 05/22/2026 — building rises above grade',
     },
     {
-      name:'Phase 4 — Exterior Finishes & Site Utilities',
-      dates:'07/03/2026 – 07/21/2026',
-      scope:'Parapet cap flashing, paint, building numbers, hardscape — concrete sidewalks & ramps',
-      statusLabel:'Not Started', statusBadge:'b-gry', pct:0, barClass:'bar-gry',
-      note:'',
+      name: 'Phase 4 — Exterior Finishes & Site Utilities',
+      dates: '06/03/2026 – 07/20/2026',
+      scope: 'Brick veneer, parapet flashing, paint, signage, SES, meter set',
+      pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
+      barClass:'pb-pur', pctColor:'#a855f7', note: null,
     },
     {
-      name:'Phase 5 — Paving, Striping & Landscaping',
-      dates:'07/22/2026 – 07/31/2026',
-      scope:'Grading and paving, utility adjustments, parking lot striping & signage, landscaping & irrigation',
-      statusLabel:'Not Started', statusBadge:'b-gry', pct:0, barClass:'bar-gry',
-      note:'',
+      name: 'Phase 5 — Hardscaping & Paving',
+      dates: '06/03/2026 – 07/31/2026',
+      scope: 'Concrete sidewalks, grading, paving, striping, landscaping',
+      pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
+      barClass:'pb-yel', pctColor:'#eab308', note: null,
     },
     {
-      name:'Phase 6 — Final Inspections & Certification of Completion',
-      dates:'08/03/2026 – 08/07/2026',
-      scope:'Building finals inspection, final cleaning interior & exterior, certification of completion',
-      statusLabel:'Not Started', statusBadge:'b-gry', pct:0, barClass:'bar-gry',
-      note:'',
+      name: 'Phase 6 — Final Inspections & Certification of Completion',
+      dates: '08/03/2026 – 08/07/2026',
+      scope: 'Building finals, final cleaning, certification of completion',
+      pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
+      barClass:'pb-gry', pctColor:'#94a3b8', note: null,
     },
   ],
+
+  // ── Project info (4-column: label | val | label | val per row) ──
+  projectInfo: [
+    { l1:'Project',                 v1:'Chipotle Mexican Grill — Rita Ranch II', l2:'Shell Contract Duration', v2:'85 days (04/13/2026 – 08/07/2026)', h2:false },
+    { l1:'Location',                v1:'Houghton Town Center, Tucson, Arizona',  l2:'TI Early Access',          v2:'TBD — Post Possession',             h2:false },
+    { l1:'Store No.',               v1:'02-6133',                                l2:'Shell Delivery Date',       v2:'August 7, 2026',                    h2:true  },
+    { l1:'Landlord',                v1:'Old Vail AZ Development Group LLC',      l2:'Report Distribution',       v2:'reports@oldvailaz.com',             h2:false },
+  ],
+
 };
+// ============================================================
+// END PROJECT CONFIG
+// ============================================================
+
 
 // ============================================================
-// RENDER ENGINE — Do not edit below this line
+// RENDER ENGINE — DO NOT MODIFY
 // ============================================================
-document.documentElement.style.setProperty('--brand', PROJECT.brandColor);
-function daysFrom(d){ return Math.ceil((new Date(d) - new Date()) / 864e5) }
-function fmtDate(d){ return new Date(d).toLocaleDateString('en-US',{month:'2-digit',day:'2-digit',year:'numeric'}) }
-function fmtLong(d){ return new Date(d).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) }
-const now = new Date();
-const todayStr = now.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-document.title = `${PROJECT.tenantName} — ${PROJECT.projectName} Dashboard`;
-document.getElementById('ph-name').textContent = `${PROJECT.tenantName} — ${PROJECT.projectName}`;
-document.getElementById('ph-date').textContent = `Report Date: ${todayStr}`;
-document.getElementById('logo-text').innerHTML = PROJECT.logoLines.replace(/\n/g,'<br>');
-document.getElementById('logo-text').style.color = PROJECT.brandColor;
-document.getElementById('hdr-name').textContent = `${PROJECT.tenantName} — ${PROJECT.projectName}`;
-document.getElementById('hdr-store').textContent = `${PROJECT.location} \u00A0|\u00A0 Store No. ${PROJECT.storeNo} \u00A0|\u00A0 ${PROJECT.center}`;
-document.getElementById('shell-badge').textContent = `Shell Delivery: ${fmtDate(PROJECT.shellDelivery)}`;
-document.getElementById('landlord').textContent = PROJECT.landlord;
-document.getElementById('gc').textContent = PROJECT.gc;
-document.getElementById('today-date').textContent = todayStr;
-const contractStart = new Date(PROJECT.contractStart);
-const shellEnd = new Date(PROJECT.shellDelivery);
-const weekNum = Math.max(1, Math.ceil((now - contractStart) / (7*864e5)));
-const totalWeeks = Math.ceil((shellEnd - contractStart) / (7*864e5));
-document.getElementById('week-badge').textContent = now < contractStart ? 'Pre-Construction' : `Week ${weekNum} of ${totalWeeks}`;
-document.getElementById('days-shell').textContent = daysFrom(PROJECT.shellDelivery);
-document.getElementById('shell-sub').textContent = `Target: ${fmtDate(PROJECT.shellDelivery)}`;
-document.getElementById('days-ti').textContent = daysFrom(PROJECT.tiStart);
-document.getElementById('ti-sub').textContent = `TI Start: ${fmtDate(PROJECT.tiStart)}`;
-document.getElementById('shell-pct').textContent = `${PROJECT.shellPct}%`;
-document.getElementById('shell-days').textContent = `Day ${PROJECT.shellDayCur} of ${PROJECT.shellDayTotal}`;
-document.getElementById('days-frame').textContent = daysFrom(PROJECT.framingStart);
-document.getElementById('frame-sub').textContent = `Structural start: ${fmtDate(PROJECT.framingStart)}`;
-document.getElementById('ov-pct').textContent = `${PROJECT.shellPct}% Complete`;
-document.getElementById('ov-bar').style.width = `${PROJECT.shellPct}%`;
-const msWrap = document.getElementById('ov-milestones');
-PROJECT.milestones.forEach(ms => {
-  const dc = ms.status==='done'?'ov-ms-done':ms.status==='active'?'ov-ms-active':'ov-ms-pending';
-  msWrap.innerHTML += `<div class="ov-ms"><div class="ov-ms-dot ${dc}"></div><div class="ov-ms-lbl">${ms.label}</div><div class="ov-ms-date">${ms.date}</div></div>`;
+document.addEventListener('DOMContentLoaded', () => {
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const toD = s => Math.round((new Date(s+'T00:00:00') - today)/86400000);
+  const fmt = s => new Date(s+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  const weekNum = () => {
+    const d = Math.floor((today - new Date(P.contractStart+'T00:00:00'))/86400000);
+    return d < 0 ? 0 : Math.floor(d/7)+1;
+  };
+
+  // Header
+  document.getElementById('h-logo').innerHTML = P.logoLines.map(l=>`<span>${l}</span>`).join('');
+  document.getElementById('h-title').textContent = `${P.tenant} — ${P.project}`;
+  document.getElementById('h-sub').textContent   = `${P.address}  |  ${P.storeNo}  |  ${P.center}`;
+  document.getElementById('h-pill').textContent  = `Shell Delivery: ${fmt(P.certCompletion)}`;
+
+  // Info bar
+  document.getElementById('ib-ll').innerHTML    = `Landlord: <strong>${P.landlord}</strong>`;
+  document.getElementById('ib-gc').innerHTML    = `GC: <strong>${P.gc}</strong>`;
+  document.getElementById('ib-date').textContent= `Updated: ${today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}`;
+  const wk = weekNum();
+  document.getElementById('ib-week').textContent = wk<=0 ? 'Pre-Construction' : `Week ${wk} of ${P.totalWeeks}`;
+
+  // Stats
+  const dCC = toD(P.certCompletion);
+  document.getElementById('st1').textContent  = dCC>0 ? dCC : '—';
+  document.getElementById('st1s').textContent = `Target: ${fmt(P.certCompletion)}`;
+
+  const dFR = toD('2026-05-22');
+  document.getElementById('st2').textContent  = dFR>0 ? dFR : '—';
+  document.getElementById('st2s').textContent = 'Structural start: 05/22/2026';
+
+  document.getElementById('st3').textContent  = P.shellPct+'%';
+  document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
+
+  const dCS = toD(P.contractStart);
+  document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
+  document.getElementById('st4s').textContent = `Start date: ${fmt(P.contractStart)}`;
+
+  // Progress bar
+  document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
+  document.getElementById('pb-fill').style.width = P.shellPct + '%';
+  document.getElementById('pb-fill').className   = 'prog-fill '+(P.shellPct>0?'p-red':'p-dim');
+  if (P.scheduledPct>0 && P.scheduledPct<100) {
+    const t = document.getElementById('pb-tick');
+    t.style.left='calc('+P.scheduledPct+'% - 1px)'; t.style.display='block';
+  }
+  document.getElementById('pb-day').textContent   = `Day ${P.shellDayCur} of ${P.contractDays}`;
+  document.getElementById('pb-sched').textContent = `Baseline: ${P.scheduledPct}%`;
+
+  // Milestones
+  document.getElementById('milestones').innerHTML = P.milestones.map(m=>`
+    <div class="ms-item">
+      <div class="ms-dot ${m.status}"></div>
+      <div class="ms-lbl">${m.label.replace(/\n/g,'<br>')}</div>
+      <div class="ms-dt">${m.date}</div>
+    </div>`).join('');
+
+  // Variance
+  const v=P.varianceDays, pre=P.shellDayCur===0&&v===0;
+  let vc, vl, vd;
+  if(pre)  { vc='vw-pre';    vl='PRE-CONSTRUCTION'; vd=`Construction starts ${fmt(P.contractStart)}`; }
+  else if(v>2)  { vc='vw-ahead';  vl=`AHEAD OF SCHEDULE — ${v} DAYS`;         vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
+  else if(v<-2) { vc='vw-behind'; vl=`BEHIND SCHEDULE — ${Math.abs(v)} DAYS`; vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
+  else          { vc='vw-on';     vl='ON TRACK';                               vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
+  document.getElementById('vw').className        = 'variance-wrap '+vc;
+  document.getElementById('v-lbl').textContent   = vl;
+  document.getElementById('v-sep').textContent   = pre ? '' : ' | ';
+  document.getElementById('v-dtl').textContent   = vd;
+
+  // Key dates
+  document.getElementById('key-dates').innerHTML = P.keyDates.map(d=>{
+    const n = toD(d.date);
+    const rhs = n<0
+      ? `<div class="kd-done">✓</div>`
+      : `<div class="kd-num" style="color:${d.color}">${n}</div><div class="kd-unit">days</div>`;
+    return `<div class="kd-row">
+      <div><div class="kd-name ${d.bold?'hi':''}">${d.label}</div><div class="kd-sub">${d.sub}</div></div>
+      <div style="text-align:right">${rhs}</div>
+    </div>`;
+  }).join('');
+
+  // Work items
+  document.getElementById('tw-hdr').innerHTML =
+    `<span>Work Completed This Week</span><span class="wk-badge green">${P.thisWeekLabel.toUpperCase()}</span>`;
+  document.getElementById('tw-body').innerHTML = P.thisWeek.map(w=>`
+    <div class="wi-row">
+      <div class="wi-dot" style="background:${w.color}"></div>
+      <div><div class="wi-text">${w.text}</div><span class="wi-tag">${w.tag}</span></div>
+    </div>`).join('');
+
+  document.getElementById('nw-hdr').innerHTML =
+    `<span>Planned Work — Next 2 Weeks</span><span class="wk-badge blue">${P.nextWeeksLabel}</span>`;
+  document.getElementById('nw-body').innerHTML = P.nextWeeks.map(w=>`
+    <div class="wi-row">
+      <div class="wi-dot" style="background:${w.color}"></div>
+      <div><div class="wi-text">${w.text}</div><span class="wi-tag">${w.tag}</span></div>
+    </div>`).join('');
+
+  // Phases
+  document.getElementById('phases').innerHTML = P.phases.map(ph=>`
+    <div class="ph-block">
+      <div class="ph-top">
+        <div class="ph-name">${ph.name}</div>
+        <div class="ph-right">
+          <div class="ph-badge ${ph.badge}">${ph.badgeLabel}</div>
+          <div class="ph-pct" style="color:${ph.pctColor}">${ph.pct}%</div>
+        </div>
+      </div>
+      <div class="ph-meta">${ph.dates} &nbsp;|&nbsp; ${ph.scope}</div>
+      <div class="ph-bar-track"><div class="ph-bar ${ph.pct>0?ph.barClass:'pb-dim'}" style="width:${Math.max(ph.pct,0)}%"></div></div>
+      ${ph.note ? `<div class="ph-note">${ph.note}</div>` : ''}
+    </div>`).join('');
+
+  // Project info
+  document.getElementById('proj-info').innerHTML = P.projectInfo.map(r=>`
+    <div class="pi-cell"><div class="pi-lbl">${r.l1}</div><div class="pi-val">${r.v1}</div></div>
+    <div class="pi-cell"><div class="pi-lbl">${r.l2}</div><div class="pi-val ${r.h2?'hi':''}">${r.v2}</div></div>
+  `).join('');
+
+  // Footer
+  document.getElementById('ft').innerHTML =
+    `${P.tenant} — ${P.project} &nbsp;|&nbsp; Weekly Construction Progress Dashboard &nbsp;|&nbsp; ${P.landlord} &nbsp;|&nbsp; Report generated ${today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})} &nbsp;|&nbsp; Countdowns update live`;
 });
-const vd = PROJECT.varianceDays;
-const vBar = document.getElementById('variance-bar');
-const ap = PROJECT.shellPct, sp = PROJECT.scheduledPct;
-if(vd > 2){ vBar.className='variance-bar ahead'; document.getElementById('v-status').textContent='AHEAD OF SCHEDULE'; document.getElementById('v-detail').textContent=`${vd} days ahead of baseline  ·  Actual ${ap}% vs. planned ${sp}%`; }
-else if(vd >= -2){ vBar.className='variance-bar on-track'; document.getElementById('v-status').textContent='ON TRACK'; document.getElementById('v-detail').textContent=`Within tolerance  ·  Actual ${ap}% vs. planned ${sp}%`; }
-else{ vBar.className='variance-bar behind'; document.getElementById('v-status').textContent='BEHIND SCHEDULE'; document.getElementById('v-detail').textContent=`${Math.abs(vd)} days behind baseline  ·  Actual ${ap}% vs. planned ${sp}%`; }
-const kdEl = document.getElementById('key-dates');
-PROJECT.keyDates.forEach(kd => {
-  const boldStyle = kd.bold ? `style="font-weight:700;color:var(--brand)"` : '';
-  kdEl.innerHTML += `<div class="date-row"><div><div class="date-name" ${boldStyle}>${kd.name}</div><div class="date-sub">${kd.sub}</div></div><div class="cd-wrap"><div class="cd-num ${kd.colorClass}">${daysFrom(kd.date)}</div><div class="cd-lbl">days</div></div></div>`;
-});
-document.getElementById('this-week-badge').textContent = PROJECT.thisWeekLabel;
-const twEl = document.getElementById('this-week');
-PROJECT.thisWeek.forEach(i => { twEl.innerHTML += `<div class="week-item"><div class="week-dot" style="background:${i.color}"></div><div><div class="week-txt">${i.text}</div><div class="week-cat">${i.cat}</div></div></div>`; });
-document.getElementById('next-weeks-badge').textContent = PROJECT.nextWeeksLabel;
-const nwEl = document.getElementById('next-weeks');
-PROJECT.nextWeeks.forEach(i => { nwEl.innerHTML += `<div class="week-item"><div class="week-dot" style="background:${i.color}"></div><div><div class="week-txt">${i.text}</div><div class="week-cat">${i.cat}</div></div></div>`; });
-document.getElementById('sched-label').textContent = `${PROJECT.contractDays}-day shell \u00A0|\u00A0 ${fmtDate(PROJECT.contractStart)} \u2013 ${fmtDate(PROJECT.contractEnd)}`;
-const phEl = document.getElementById('phases');
-PROJECT.phases.forEach((ph, i) => {
-  const w = ph.pct===0 ? 1 : ph.pct;
-  phEl.innerHTML += `${i>0?'<div class="phase-divider"></div>':''}<div class="phase-item"><div class="phase-hdr"><div><div class="phase-name">${ph.name}</div><div class="phase-dates">${ph.dates} &nbsp;|&nbsp; ${ph.scope}</div></div><div class="phase-right"><span class="bdg ${ph.statusBadge}">${ph.statusLabel}</span><span class="phase-pct">${ph.pct}%</span></div></div><div class="bar-bg"><div class="bar-fill ${ph.barClass}" style="width:${w}%"></div></div>${ph.note?`<div class="phase-note">${ph.note}</div>`:''}</div>`;
-});
-const il = document.getElementById('info-left');
-const ir = document.getElementById('info-right');
-[['Project',`${PROJECT.tenantName} — ${PROJECT.projectName}`],['Location',`${PROJECT.center}, ${PROJECT.location}`],['Store No.',PROJECT.storeNo],['Landlord',PROJECT.landlord]].forEach(([l,v])=>{ il.innerHTML+=`<div class="info-row"><span class="info-lbl">${l}</span><span class="info-val">${v}</span></div>`; });
-[['Shell Contract Duration',`${PROJECT.contractDays} days (${fmtDate(PROJECT.contractStart)} – ${fmtDate(PROJECT.contractEnd)})`,false],['TI Early Access',fmtLong(PROJECT.tiStart),false],['Shell Delivery Date','December 14, 2026',true],['Early Shell Delivery','August 7, 2026',false]].forEach(([l,v,brand])=>{ ir.innerHTML+=`<div class="info-row"><span class="info-lbl">${l}</span><span class="info-val" ${brand?'style="color:var(--brand);font-weight:600"':''}>${v}</span></div>`; });
-document.getElementById('footer').textContent = `${PROJECT.tenantName} — ${PROJECT.projectName}  |  Weekly Construction Progress Dashboard  |  ${PROJECT.landlord}  |  Report generated ${todayStr}  |  Countdowns update live`;
 </script>
+
+<!-- ════════════ MARKUP ════════════ -->
+<div class="wrapper">
+<div class="header">
+  <div class="logo-circle" id="h-logo"></div>
+  <div class="header-info">
+    <div class="header-title" id="h-title"></div>
+    <div class="header-sub"   id="h-sub"></div>
+  </div>
+  <div><div class="delivery-pill" id="h-pill"></div></div>
+</div>
+
+<div class="info-bar">
+  <div style="display:flex;align-items:center;">
+    <span id="ib-ll"></span><span class="ib-sep">|</span>
+    <span id="ib-gc"></span><span class="ib-sep">|</span>
+    <span id="ib-date"></span>
+  </div>
+  <div class="week-badge" id="ib-week"></div>
+</div>
+
+<div class="page">
+
+  <!-- STATS: 4 across -->
+  <div class="stat-grid">
+    <div class="stat-tile acc-red">
+      <div class="stat-lbl">Days to Shell Delivery</div>
+      <div class="stat-num c-red"  id="st1"></div>
+      <div class="stat-sub"        id="st1s"></div>
+    </div>
+    <div class="stat-tile acc-blue">
+      <div class="stat-lbl">Days to Framing Start</div>
+      <div class="stat-num c-blue" id="st2"></div>
+      <div class="stat-sub"        id="st2s"></div>
+    </div>
+    <div class="stat-tile acc-green">
+      <div class="stat-lbl">Shell % Complete</div>
+      <div class="stat-num c-green" id="st3"></div>
+      <div class="stat-sub"         id="st3s"></div>
+    </div>
+    <div class="stat-tile acc-org">
+      <div class="stat-lbl">Construction Starts In</div>
+      <div class="stat-num c-org" id="st4"></div>
+      <div class="stat-sub"       id="st4s"></div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="card">
+    <div class="prog-wrap">
+      <div class="prog-top">
+        <span class="prog-title">Overall Shell Construction Progress</span>
+        <span class="prog-pct" id="pb-pct"></span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill p-dim" id="pb-fill" style="width:0%"></div>
+        <div class="prog-tick" id="pb-tick"></div>
+      </div>
+      <div class="prog-meta">
+        <span id="pb-day"></span>
+        <span id="pb-sched"></span>
+      </div>
+    </div>
+    <div class="ms-row" id="milestones"></div>
+    <div class="variance-wrap" id="vw">
+      <div class="v-dot"></div>
+      <div class="v-lbl" id="v-lbl"></div>
+      <span class="v-sep" id="v-sep"></span>
+      <div class="v-detail" id="v-dtl"></div>
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN: Key Dates + Work Items -->
+  <div class="two-col">
+
+    <!-- LEFT: Key Dates -->
+    <div class="card" style="margin:0;">
+      <div class="card-hdr">Key Project Dates</div>
+      <div id="key-dates"></div>
+    </div>
+
+    <!-- RIGHT: Work Items -->
+    <div class="card" style="margin:0;">
+      <div class="wk-hdr" id="tw-hdr"></div>
+      <div id="tw-body"></div>
+      <div class="wi-div"></div>
+      <div class="wk-hdr" id="nw-hdr"></div>
+      <div id="nw-body" style="padding-bottom:8px;"></div>
+    </div>
+
+  </div>
+
+  <!-- PHASE SCHEDULE -->
+  <div class="card">
+    <div class="card-hdr">
+      <span>Construction Schedule by Phase</span>
+      <span class="card-hdr-right">85-day shell &nbsp;|&nbsp; 04/13/2026 – 08/07/2026</span>
+    </div>
+    <div id="phases"></div>
+  </div>
+
+  <!-- PROJECT INFO -->
+  <div class="card">
+    <div class="card-hdr">Project Information</div>
+    <div class="pi-grid" id="proj-info"></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="ft" id="ft"></div>
+</div>
+</div><!-- end .wrapper -->
+
 </body>
 </html>
