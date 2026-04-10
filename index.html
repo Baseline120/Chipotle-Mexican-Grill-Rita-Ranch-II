@@ -26,7 +26,22 @@ body {
   padding: 16px;
 }
 
-.wrapper { max-width: 860px; margin: 0 auto; }
+.wrapper { max-width: 1060px; margin: 0 auto; }
+
+/* ── BASELINE MASTHEAD ── */
+.masthead {
+  background: #07101c;
+  border: 1px solid #1a2d42;
+  border-bottom: 2px solid #CE1126;
+  border-radius: 10px 10px 0 0;
+  padding: 7px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.masthead-brand { display: flex; align-items: center; gap: 10px; }
+.masthead-wordmark {
+  font-size: 15px; font-weight: 800; letter-spacing: 2.5px;
+  text-transform: uppercase; color: #ffffff;
+}
 
 /* ── HEADER ── */
 .header {
@@ -34,7 +49,7 @@ body {
   padding: 13px 20px;
   margin: 0 0 0 0;
   display: flex; align-items: center; gap: 14px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 0;
 }
 .logo-circle {
   width: 52px; height: 52px; border-radius: 50%;
@@ -296,20 +311,19 @@ const P = {
 
   // ── Key dates (left column) ──
   keyDates: [
-    { label:'Structural Framing Start',        sub:'Above-ground construction begins',   date:'2026-05-22', color:'#f59e0b', bold:false },
-    { label:'Slab on Grade Pour',              sub:'04/21/2026',                          date:'2026-04-21', color:'#7dd3fc', bold:false },
+    { label:'Building Pad Cert.',              sub:'04/22/2026',                          date:'2026-04-22', color:'#f59e0b', bold:false },
+    { label:'Foundation & Ribbon Slab',        sub:'05/21/2026',                          date:'2026-05-21', color:'#7dd3fc', bold:false },
     { label:'Building Enclosed / Watertight',  sub:'Est. 06/19/2026',                    date:'2026-06-19', color:'#7b90ab', bold:false },
-    { label:'Meter Set / Power On',            sub:'06/03/2026',                          date:'2026-06-03', color:'#7b90ab', bold:false },
+    { label:'TI Early Access',                  sub:'06/07/2026',                          date:'2026-06-07', color:'#7b90ab', bold:false },
     { label:'Cert of Completion',              sub:'08/07/2026',                          date:'2026-08-07', color:'#7b90ab', bold:false },
-    { label:'Shell Delivery',                  sub:'08/07/2026',                          date:'2026-08-07', color:'#CE1126', bold:true  },
+    { label:'Early Shell Delivery',            sub:'08/07/2026',                          date:'2026-08-07', color:'#CE1126', bold:true  },
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 03/29',
+  thisWeekLabel: 'Week of 04/06',
   thisWeek: [
-    { text:'NTP issued to DG Fenn Construction',              tag:'Procurement',  color:'#22c55e' },
-    { text:'Pre-construction meeting held with Glenn Turney', tag:'Admin',        color:'#22c55e' },
-    { text:'Permit set and civil plans distributed to GC',    tag:'Permitting',   color:'#22c55e' },
+    { text:'Building & Sewer Permit issued',  tag:'Permitting · 4/8/2026',   color:'#22c55e' },
+    { text:'CO issued for SWPPP',             tag:'Compliance · 4/10/2026',  color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
@@ -372,7 +386,7 @@ const P = {
   // ── Project info (4-column: label | val | label | val per row) ──
   projectInfo: [
     { l1:'Project',                 v1:'Chipotle Mexican Grill — Rita Ranch II', l2:'Shell Contract Duration', v2:'85 days (04/13/2026 – 08/07/2026)', h2:false },
-    { l1:'Location',                v1:'Houghton Town Center, Tucson, Arizona',  l2:'TI Early Access',          v2:'TBD — Post Possession',             h2:false },
+    { l1:'Location',                v1:'Houghton Town Center, Tucson, Arizona',  l2:'TI Early Access',          v2:'08/07/2026',                        h2:false },
     { l1:'Store No.',               v1:'02-6133',                                l2:'Early Shell Delivery Date', v2:'August 7, 2026',                    h2:true  },
     { l1:'Landlord',                v1:'Old Vail AZ Development Group LLC',      l2:'Shell Delivery Date',       v2:'December 14, 2026',                 h2:false },
   ],
@@ -514,6 +528,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ════════════ MARKUP ════════════ -->
 <div class="wrapper">
+<div class="masthead">
+  <div class="masthead-brand">
+    <div class="masthead-wordmark">Baseline Development Companies, LLC</div>
+  </div>
+</div>
+
 <div class="header">
   <div class="logo-circle" id="h-logo"></div>
   <div class="header-info">
