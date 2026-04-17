@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v3 | Updated: 2026-04-04 | Updated by: BC
+   v4 | Updated: 2026-04-17 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -121,10 +121,10 @@ body {
 .prog-wrap { padding: 14px 16px 10px; }
 .prog-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .prog-title { font-size: 11px; font-weight: 700; color: #7b90ab; text-transform: uppercase; letter-spacing: 0.6px; }
-.prog-pct { font-size: 22px; font-weight: 900; color: #CE1126; }
+.prog-pct { font-size: 22px; font-weight: 900; color: #22c55e; }
 .prog-track { height: 10px; background: #1e3050; border-radius: 5px; overflow: hidden; position: relative; }
 .prog-fill { height: 100%; border-radius: 5px; }
-.prog-fill.p-red { background: #CE1126; }
+.prog-fill.p-red { background: #22c55e; }
 .prog-fill.p-dim { background: #2a3f5a; }
 .prog-tick { position: absolute; top:0; bottom:0; width: 2px; background: rgba(255,255,255,0.25); display:none; }
 .prog-meta { display: flex; justify-content: space-between; margin-top: 5px; font-size: 9px; color: #8ba3bc; }
@@ -288,20 +288,20 @@ const P = {
 
   contractStart: '2026-04-13',
   certCompletion:'2026-08-07',
-  contractDays:  85,
+  contractDays:  116,
   ldRate:        '$1,300/day',
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      0,
-  shellDayCur:   0,
-  scheduledPct:  0,
+  shellPct:      4,
+  shellDayCur:   5,
+  scheduledPct:  4,
   varianceDays:  0,    // + ahead, - behind; 0 with day 0 = pre-construction
 
   // ── Milestones ──
   // status: 'done' | 'active' | 'pending'
   milestones: [
-    { label:'Mobilization',          date:'4/13',  status:'pending' },
+    { label:'Mobilization',          date:'4/13',  status:'done' },
     { label:'Foundation\nComplete',  date:'5/21',  status:'pending' },
     { label:'Framing\nStart',        date:'5/22',  status:'pending' },
     { label:'Shell\nEnclosed',       date:'6/19',  status:'pending' },
@@ -320,20 +320,20 @@ const P = {
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 04/06',
+  thisWeekLabel: 'Week of 04/13',
   thisWeek: [
-    { text:'Building & Sewer Permit issued',  tag:'Permitting · 4/8/2026',   color:'#22c55e' },
-    { text:'CO issued for SWPPP',             tag:'Compliance · 4/10/2026',  color:'#22c55e' },
+    { text:'Mobilization — fencing, SWPPP, temp facilities',  tag:'Site · 4/13',        color:'#22c55e' },
+    { text:'Survey and staking',                              tag:'Site · 4/16',        color:'#22c55e' },
+    { text:'Pre-Con with City of Tucson',                     tag:'Permitting · 4/17',  color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '04/05 – 04/19',
+  nextWeeksLabel: '04/20 – 05/03',
   nextWeeks: [
-    { text:'Mobilization — fencing, SWPPP, temp facilities',   tag:'Site · 4/13',  color:'#7dd3fc' },
-    { text:'Survey and staking',                               tag:'Site · 4/14',  color:'#7dd3fc' },
-    { text:'Clear and grub / earthwork',                       tag:'Site · 4/15',  color:'#7dd3fc' },
-    { text:'Over-excavation — certified building pad',         tag:'Site · 4/17',  color:'#7dd3fc' },
-    { text:'Set structural steel columns — framing begins',    tag:'Structural · 4/10', color:'#a855f7' },
+    { text:'Over-excavation — certified building pad',  tag:'Site · 4/22',        color:'#7dd3fc' },
+    { text:'Start foundations',                         tag:'Structural · 4/23',  color:'#a855f7' },
+    { text:'Place foundations',                         tag:'Structural · 4/27',  color:'#a855f7' },
+    { text:'Start underground utilities',               tag:'MEP · 4/29',         color:'#f59e0b' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -342,7 +342,7 @@ const P = {
       name: 'Phase 1 — Mobilization & Site Prep',
       dates: '04/13/2026 – 04/21/2026',
       scope: 'Permit, mobilize, survey, earthwork, over-excavation',
-      pct: 0, badge:'b-upcoming', badgeLabel:'Upcoming',
+      pct: 55, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-grn', pctColor:'#22c55e', note: null,
     },
     {
@@ -385,8 +385,8 @@ const P = {
 
   // ── Project info (4-column: label | val | label | val per row) ──
   projectInfo: [
-    { l1:'Project',                 v1:'Chipotle Mexican Grill — Rita Ranch II', l2:'Shell Contract Duration', v2:'85 days (04/13/2026 – 08/07/2026)', h2:false },
-    { l1:'Location',                v1:'Houghton Town Center, Tucson, Arizona',  l2:'TI Early Access',          v2:'08/07/2026',                        h2:false },
+    { l1:'Project',                 v1:'Chipotle Mexican Grill — Rita Ranch II', l2:'Shell Contract Duration', v2:'116 days (04/13/2026 – 08/07/2026)', h2:false },
+    { l1:'Location',                v1:'Houghton Town Center, Tucson, Arizona',  l2:'TI Early Access',          v2:'06/07/2026',                        h2:false },
     { l1:'Store No.',               v1:'02-6133',                                l2:'Early Shell Delivery Date', v2:'August 7, 2026',                    h2:true  },
     { l1:'Landlord',                v1:'Old Vail AZ Development Group LLC',      l2:'Shell Delivery Date',       v2:'December 14, 2026',                 h2:false },
   ],
@@ -435,9 +435,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('st3').textContent  = P.shellPct+'%';
   document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
 
-  const dCS = toD(P.contractStart);
+  const dCS = toD('2026-04-27');
   document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
-  document.getElementById('st4s').textContent = `Start date: ${fmt(P.contractStart)}`;
+  document.getElementById('st4s').textContent = 'Foundation pour: 04/27/2026';
 
   // Progress bar
   document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="stat-sub"         id="st3s"></div>
     </div>
     <div class="stat-tile acc-org">
-      <div class="stat-lbl">Construction Starts In</div>
+      <div class="stat-lbl">Days to Foundation Pour</div>
       <div class="stat-num c-org" id="st4"></div>
       <div class="stat-sub"       id="st4s"></div>
     </div>
@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="card">
     <div class="card-hdr">
       <span>Construction Schedule by Phase</span>
-      <span class="card-hdr-right">85-day shell &nbsp;|&nbsp; 04/13/2026 – 08/07/2026</span>
+      <span class="card-hdr-right">116-day shell &nbsp;|&nbsp; 04/13/2026 – 08/07/2026</span>
     </div>
     <div id="phases"></div>
   </div>
