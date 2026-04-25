@@ -293,17 +293,17 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      4,
-  shellDayCur:   5,
-  scheduledPct:  4,
+  shellPct:      8,
+  shellDayCur:   12,
+  scheduledPct:  8,
   varianceDays:  0,    // + ahead, - behind; 0 with day 0 = pre-construction
 
   // ── Milestones ──
   // status: 'done' | 'active' | 'pending'
   milestones: [
     { label:'Mobilization',          date:'4/13',  status:'done' },
+    { label:'Certified\nPad',        date:'4/24',  status:'done' },
     { label:'Foundation\nComplete',  date:'5/21',  status:'pending' },
-    { label:'Framing\nStart',        date:'5/22',  status:'pending' },
     { label:'Shell\nEnclosed',       date:'6/19',  status:'pending' },
     { label:'Site\nComplete',        date:'7/31',  status:'pending' },
     { label:'Cert of\nCompletion',   date:'8/7',   status:'pending' },
@@ -311,8 +311,8 @@ const P = {
 
   // ── Key dates (left column) ──
   keyDates: [
-    { label:'Building Pad Cert.',              sub:'04/22/2026',                          date:'2026-04-22', color:'#f59e0b', bold:false },
-    { label:'Foundation & Ribbon Slab',        sub:'05/21/2026',                          date:'2026-05-21', color:'#7dd3fc', bold:false },
+    { label:'Footings Poured',               sub:'05/01/2026',                          date:'2026-05-01', color:'#f59e0b', bold:false },
+    { label:'Foundation & Ribbon Slab',      sub:'05/21/2026',                          date:'2026-05-21', color:'#7dd3fc', bold:false },
     { label:'Building Enclosed / Watertight',  sub:'Est. 06/19/2026',                    date:'2026-06-19', color:'#7b90ab', bold:false },
     { label:'TI Early Access',                  sub:'06/07/2026',                          date:'2026-06-07', color:'#7b90ab', bold:false },
     { label:'Cert of Completion',              sub:'08/07/2026',                          date:'2026-08-07', color:'#7b90ab', bold:false },
@@ -320,20 +320,20 @@ const P = {
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 04/13',
+  thisWeekLabel: 'Week of 04/20',
   thisWeek: [
-    { text:'Mobilization — fencing, SWPPP, temp facilities',  tag:'Site · 4/13',        color:'#22c55e' },
-    { text:'Survey and staking',                              tag:'Site · 4/16',        color:'#22c55e' },
-    { text:'Pre-Con with City of Tucson',                     tag:'Permitting · 4/17',  color:'#22c55e' },
+    { text:'Marked & potholed all utilities',           tag:'Site · 4/21',        color:'#22c55e' },
+    { text:'Placed building pad',                       tag:'Site · 4/23',        color:'#22c55e' },
+    { text:'Building pad certified',                    tag:'Site · 4/24',        color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '04/20 – 05/03',
+  nextWeeksLabel: '04/27 – 05/10',
   nextWeeks: [
-    { text:'Over-excavation — certified building pad',  tag:'Site · 4/22',        color:'#7dd3fc' },
-    { text:'Start foundations',                         tag:'Structural · 4/23',  color:'#a855f7' },
-    { text:'Place foundations',                         tag:'Structural · 4/27',  color:'#a855f7' },
-    { text:'Start underground utilities',               tag:'MEP · 4/29',         color:'#f59e0b' },
+    { text:'Rough grade site',                        tag:'Site · 4/28',        color:'#7dd3fc' },
+    { text:'Footing rebar inspection',                tag:'Inspection · 4/28',  color:'#f59e0b' },
+    { text:'Start underground utilities',             tag:'MEP · 4/30',         color:'#f59e0b' },
+    { text:'Pour concrete building footings',         tag:'Structural · 5/01',  color:'#a855f7' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -342,14 +342,14 @@ const P = {
       name: 'Phase 1 — Mobilization & Site Prep',
       dates: '04/13/2026 – 04/21/2026',
       scope: 'Permit, mobilize, survey, earthwork, over-excavation',
-      pct: 55, badge:'b-progress', badgeLabel:'In Progress',
-      barClass:'pb-grn', pctColor:'#22c55e', note: null,
+      pct: 25, badge:'b-progress', badgeLabel:'In Progress',
+      barClass:'pb-grn', pctColor:'#22c55e', note: 'Building pad placed and certified 04/24/2026',
     },
     {
       name: 'Phase 2 — Underground Utilities & Foundation',
       dates: '04/22/2026 – 05/15/2026',
       scope: 'Fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab',
-      pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
+      pct: 2, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-org', pctColor:'#f59e0b', note: null,
     },
     {
@@ -435,9 +435,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('st3').textContent  = P.shellPct+'%';
   document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
 
-  const dCS = toD('2026-04-27');
+  const dCS = toD('2026-05-01');
   document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
-  document.getElementById('st4s').textContent = 'Foundation pour: 04/27/2026';
+  document.getElementById('st4s').textContent = 'Foundation pour: 05/01/2026';
 
   // Progress bar
   document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
