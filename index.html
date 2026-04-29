@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v4 | Updated: 2026-04-17 | Updated by: BC
+   v5 | Updated: 2026-04-29 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -293,9 +293,9 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      8,
-  shellDayCur:   12,
-  scheduledPct:  8,
+  shellPct:      14,
+  shellDayCur:   17,
+  scheduledPct:  14,
   varianceDays:  0,    // + ahead, - behind; 0 with day 0 = pre-construction
 
   // ── Milestones ──
@@ -311,7 +311,7 @@ const P = {
 
   // ── Key dates (left column) ──
   keyDates: [
-    { label:'Footings Poured',               sub:'05/01/2026',                          date:'2026-05-01', color:'#f59e0b', bold:false },
+    { label:'Footings Start',                sub:'05/01/2026',                          date:'2026-05-01', color:'#f59e0b', bold:false },
     { label:'Foundation & Ribbon Slab',      sub:'05/21/2026',                          date:'2026-05-21', color:'#7dd3fc', bold:false },
     { label:'Building Enclosed / Watertight',  sub:'Est. 06/19/2026',                    date:'2026-06-19', color:'#7b90ab', bold:false },
     { label:'TI Early Access',                  sub:'06/07/2026',                          date:'2026-06-07', color:'#7b90ab', bold:false },
@@ -320,36 +320,35 @@ const P = {
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 04/20',
+  thisWeekLabel: 'Week of 04/27',
   thisWeek: [
-    { text:'Marked & potholed all utilities',           tag:'Site · 4/21',        color:'#22c55e' },
-    { text:'Placed building pad',                       tag:'Site · 4/23',        color:'#22c55e' },
-    { text:'Building pad certified',                    tag:'Site · 4/24',        color:'#22c55e' },
+    { text:'Pre-con with Power Company',                tag:'Coordination · 4/27', color:'#22c55e' },
+    { text:'Graded parking & drive area',               tag:'Site · 4/28',         color:'#22c55e' },
+    { text:'Foundation & utilities layout',             tag:'Site · 4/29',         color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '04/27 – 05/10',
+  nextWeeksLabel: '05/04 – 05/17',
   nextWeeks: [
-    { text:'Rough grade site',                        tag:'Site · 4/28',        color:'#7dd3fc' },
-    { text:'Footing rebar inspection',                tag:'Inspection · 4/28',  color:'#f59e0b' },
-    { text:'Start underground utilities',             tag:'MEP · 4/30',         color:'#f59e0b' },
-    { text:'Pour concrete building footings',         tag:'Structural · 5/01',  color:'#a855f7' },
+    { text:'Foundation rebar inspection',             tag:'Inspection · 5/06',  color:'#f59e0b' },
+    { text:'Foundation for trash enclosure',          tag:'Structural · 5/07',  color:'#a855f7' },
+    { text:'Place concrete footing',                  tag:'Structural · 5/08',  color:'#a855f7' },
   ],
 
   // ── Phases (no task lists — summary only) ──
   phases: [
     {
       name: 'Phase 1 — Mobilization & Site Prep',
-      dates: '04/13/2026 – 04/21/2026',
+      dates: '04/13/2026 – 05/08/2026',
       scope: 'Permit, mobilize, survey, earthwork, over-excavation',
-      pct: 25, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 73, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-grn', pctColor:'#22c55e', note: 'Building pad placed and certified 04/24/2026',
     },
     {
       name: 'Phase 2 — Underground Utilities & Foundation',
       dates: '04/22/2026 – 05/15/2026',
       scope: 'Fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab',
-      pct: 2, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 15, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-org', pctColor:'#f59e0b', note: null,
     },
     {
@@ -437,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dCS = toD('2026-05-01');
   document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
-  document.getElementById('st4s').textContent = 'Foundation pour: 05/01/2026';
+  document.getElementById('st4s').textContent = 'Foundation start: 05/01/2026';
 
   // Progress bar
   document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
@@ -572,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="stat-sub"         id="st3s"></div>
     </div>
     <div class="stat-tile acc-org">
-      <div class="stat-lbl">Days to Foundation Pour</div>
+      <div class="stat-lbl">Days to Foundation Start</div>
       <div class="stat-num c-org" id="st4"></div>
       <div class="stat-sub"       id="st4s"></div>
     </div>
