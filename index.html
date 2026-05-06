@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v5 | Updated: 2026-04-29 | Updated by: BC
+   v6 | Updated: 2026-05-06 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -293,17 +293,17 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      14,
-  shellDayCur:   17,
-  scheduledPct:  14,
-  varianceDays:  0,    // + ahead, - behind; 0 with day 0 = pre-construction
+  shellPct:      18,
+  shellDayCur:   24,
+  scheduledPct:  20,
+  varianceDays:  -2,    // + ahead, - behind; 0 with day 0 = pre-construction
 
   // ── Milestones ──
   // status: 'done' | 'active' | 'pending'
   milestones: [
     { label:'Mobilization',          date:'4/13',  status:'done' },
     { label:'Certified\nPad',        date:'4/24',  status:'done' },
-    { label:'Foundation\nComplete',  date:'5/21',  status:'pending' },
+    { label:'Foundation\nComplete',  date:'5/21',  status:'active' },
     { label:'Shell\nEnclosed',       date:'6/19',  status:'pending' },
     { label:'Site\nComplete',        date:'7/31',  status:'pending' },
     { label:'Cert of\nCompletion',   date:'8/7',   status:'pending' },
@@ -320,19 +320,21 @@ const P = {
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 04/27',
+  thisWeekLabel: 'Week of 05/04',
   thisWeek: [
-    { text:'Pre-con with Power Company',                tag:'Coordination · 4/27', color:'#22c55e' },
-    { text:'Graded parking & drive area',               tag:'Site · 4/28',         color:'#22c55e' },
-    { text:'Foundation & utilities layout',             tag:'Site · 4/29',         color:'#22c55e' },
+    { text:'Water utilities installed',                    tag:'Utilities · 5/04',    color:'#22c55e' },
+    { text:'Inspection of water utilities',                tag:'Inspection · 5/05',   color:'#22c55e' },
+    { text:'Rebar delivery — rescheduled',                  tag:'Delay · Material',    color:'#ef4444' },
+    { text:'Footing completed',                              tag:'Structural · 5/05',   color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '05/04 – 05/17',
+  nextWeeksLabel: '05/11 – 05/24',
   nextWeeks: [
-    { text:'Foundation rebar inspection',             tag:'Inspection · 5/06',  color:'#f59e0b' },
-    { text:'Foundation for trash enclosure',          tag:'Structural · 5/07',  color:'#a855f7' },
-    { text:'Place concrete footing',                  tag:'Structural · 5/08',  color:'#a855f7' },
+    { text:'Foundation rebar inspection',                tag:'Inspection · 5/12',   color:'#f59e0b' },
+    { text:'Foundation for trash enclosure',             tag:'Structural · 5/13',   color:'#a855f7' },
+    { text:'Place concrete footing',                     tag:'Structural · 5/13',   color:'#a855f7' },
+    { text:'Start sewer & electrical underground',       tag:'Utilities · 5/18',    color:'#3b82f6' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -341,14 +343,14 @@ const P = {
       name: 'Phase 1 — Mobilization & Site Prep',
       dates: '04/13/2026 – 05/08/2026',
       scope: 'Permit, mobilize, survey, earthwork, over-excavation',
-      pct: 73, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 80, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-grn', pctColor:'#22c55e', note: 'Building pad placed and certified 04/24/2026',
     },
     {
       name: 'Phase 2 — Underground Utilities & Foundation',
       dates: '04/22/2026 – 05/15/2026',
       scope: 'Fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab',
-      pct: 15, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 35, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-org', pctColor:'#f59e0b', note: null,
     },
     {
@@ -434,9 +436,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('st3').textContent  = P.shellPct+'%';
   document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
 
-  const dCS = toD('2026-05-01');
+  const dCS = toD('2026-05-21');
   document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
-  document.getElementById('st4s').textContent = 'Foundation start: 05/01/2026';
+  document.getElementById('st4s').textContent = 'Stem wall complete: 05/21/2026';
 
   // Progress bar
   document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
@@ -571,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="stat-sub"         id="st3s"></div>
     </div>
     <div class="stat-tile acc-org">
-      <div class="stat-lbl">Days to Foundation Start</div>
+      <div class="stat-lbl">Days to Stem Wall Complete</div>
       <div class="stat-num c-org" id="st4"></div>
       <div class="stat-sub"       id="st4s"></div>
     </div>
