@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v6 | Updated: 2026-05-06 | Updated by: BC
+   v7 | Updated: 2026-05-20 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -293,18 +293,18 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      18,
-  shellDayCur:   24,
-  scheduledPct:  20,
-  varianceDays:  -2,    // + ahead, - behind; 0 with day 0 = pre-construction
+  shellPct:      25,
+  shellDayCur:   38,
+  scheduledPct:  31,
+  varianceDays:  -5,    // + ahead, - behind; 0 with day 0 = pre-construction
 
   // ── Milestones ──
   // status: 'done' | 'active' | 'pending'
   milestones: [
     { label:'Mobilization',          date:'4/13',  status:'done' },
     { label:'Certified\nPad',        date:'4/24',  status:'done' },
-    { label:'Foundation\nComplete',  date:'5/21',  status:'active' },
-    { label:'Shell\nEnclosed',       date:'6/19',  status:'pending' },
+    { label:'Foundation\nComplete',  date:'5/21',  status:'done' },
+    { label:'Shell\nEnclosed',       date:'6/19',  status:'active' },
     { label:'Site\nComplete',        date:'7/31',  status:'pending' },
     { label:'Cert of\nCompletion',   date:'8/7',   status:'pending' },
   ],
@@ -320,21 +320,20 @@ const P = {
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 05/04',
+  thisWeekLabel: 'Week of 05/18',
   thisWeek: [
-    { text:'Water utilities installed',                    tag:'Utilities · 5/04',    color:'#22c55e' },
-    { text:'Inspection of water utilities',                tag:'Inspection · 5/05',   color:'#22c55e' },
-    { text:'Rebar delivery — rescheduled',                  tag:'Delay · Material',    color:'#ef4444' },
-    { text:'Footing completed',                              tag:'Structural · 5/05',   color:'#22c55e' },
+    { text:'Form survey',                                  tag:'Survey · 5/18',       color:'#22c55e' },
+    { text:'Foundation rebar inspection',                  tag:'Inspection · 5/18',   color:'#22c55e' },
+    { text:'Placed footing & stem wall',                   tag:'Structural · 5/19',   color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '05/11 – 05/24',
+  nextWeeksLabel: '05/25 – 06/05',
   nextWeeks: [
-    { text:'Foundation rebar inspection',                tag:'Inspection · 5/12',   color:'#f59e0b' },
-    { text:'Foundation for trash enclosure',             tag:'Structural · 5/13',   color:'#a855f7' },
-    { text:'Place concrete footing',                     tag:'Structural · 5/13',   color:'#a855f7' },
-    { text:'Start sewer & electrical underground',       tag:'Utilities · 5/18',    color:'#3b82f6' },
+    { text:'Sewer & electrical underground',             tag:'Utilities · 5/26',    color:'#3b82f6' },
+    { text:'Under slab plumbing & electrical',           tag:'MEP · 5/27',          color:'#3b82f6' },
+    { text:'Set steel columns',                          tag:'Structural · 5/27',   color:'#a855f7' },
+    { text:'Start wall framing',                         tag:'Structural · 6/01',   color:'#a855f7' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -343,15 +342,15 @@ const P = {
       name: 'Phase 1 — Mobilization & Site Prep',
       dates: '04/13/2026 – 05/08/2026',
       scope: 'Permit, mobilize, survey, earthwork, over-excavation',
-      pct: 80, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 95, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-grn', pctColor:'#22c55e', note: 'Building pad placed and certified 04/24/2026',
     },
     {
       name: 'Phase 2 — Underground Utilities & Foundation',
       dates: '04/22/2026 – 05/15/2026',
       scope: 'Fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab',
-      pct: 35, badge:'b-progress', badgeLabel:'In Progress',
-      barClass:'pb-org', pctColor:'#f59e0b', note: null,
+      pct: 75, badge:'b-progress', badgeLabel:'In Progress',
+      barClass:'pb-org', pctColor:'#f59e0b', note: 'Footings & stem walls placed 05/19/2026 — underslab MEP and slab next',
     },
     {
       name: 'Phase 3 — Structural Frame & Building Enclosure',
@@ -359,7 +358,7 @@ const P = {
       scope: 'Steel columns, framing, roof, exterior membrane, storefront, EIFS, MEP rough-in',
       pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
       barClass:'pb-blu', pctColor:'#7dd3fc',
-      note: 'Structural framing starts 05/22/2026 — building rises above grade',
+      note: 'Structural framing starts 05/27/2026 — building rises above grade',
     },
     {
       name: 'Phase 4 — Exterior Finishes & Site Utilities',
@@ -429,16 +428,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('st1').textContent  = dCC>0 ? dCC : '—';
   document.getElementById('st1s').textContent = `Target: ${fmt(P.certCompletion)}`;
 
-  const dFR = toD('2026-05-22');
+  const dFR = toD('2026-05-27');
   document.getElementById('st2').textContent  = dFR>0 ? dFR : '—';
-  document.getElementById('st2s').textContent = 'Structural start: 05/22/2026';
+  document.getElementById('st2s').textContent = 'Structural start: 05/27/2026';
 
   document.getElementById('st3').textContent  = P.shellPct+'%';
   document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
 
-  const dCS = toD('2026-05-21');
+  const dCS = toD('2026-06-07');
   document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
-  document.getElementById('st4s').textContent = 'Stem wall complete: 05/21/2026';
+  document.getElementById('st4s').textContent = 'TI Early Access: 06/07/2026';
 
   // Progress bar
   document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
@@ -459,17 +458,17 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="ms-dt">${m.date}</div>
     </div>`).join('');
 
-  // Variance
-  const v=P.varianceDays, pre=P.shellDayCur===0&&v===0;
-  let vc, vl, vd;
-  if(pre)  { vc='vw-pre';    vl='PRE-CONSTRUCTION'; vd=`Construction starts ${fmt(P.contractStart)}`; }
-  else if(v>2)  { vc='vw-ahead';  vl=`AHEAD OF SCHEDULE — ${v} DAYS`;         vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
-  else if(v<-2) { vc='vw-behind'; vl=`BEHIND SCHEDULE — ${Math.abs(v)} DAYS`; vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
-  else          { vc='vw-on';     vl='ON TRACK';                               vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
-  document.getElementById('vw').className        = 'variance-wrap '+vc;
-  document.getElementById('v-lbl').textContent   = vl;
-  document.getElementById('v-sep').textContent   = pre ? '' : ' | ';
-  document.getElementById('v-dtl').textContent   = vd;
+  // Variance (removed from UI v7 — block retained but inert)
+  // const v=P.varianceDays, pre=P.shellDayCur===0&&v===0;
+  // let vc, vl, vd;
+  // if(pre)  { vc='vw-pre';    vl='PRE-CONSTRUCTION'; vd=`Construction starts ${fmt(P.contractStart)}`; }
+  // else if(v>2)  { vc='vw-ahead';  vl=`AHEAD OF SCHEDULE — ${v} DAYS`;         vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
+  // else if(v<-2) { vc='vw-behind'; vl=`BEHIND SCHEDULE — ${Math.abs(v)} DAYS`; vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
+  // else          { vc='vw-on';     vl='ON TRACK';                               vd=`Actual ${P.shellPct}% vs. planned ${P.scheduledPct}%`; }
+  // document.getElementById('vw').className        = 'variance-wrap '+vc;
+  // document.getElementById('v-lbl').textContent   = vl;
+  // document.getElementById('v-sep').textContent   = pre ? '' : ' | ';
+  // document.getElementById('v-dtl').textContent   = vd;
 
   // Key dates
   document.getElementById('key-dates').innerHTML = P.keyDates.map(d=>{
@@ -573,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="stat-sub"         id="st3s"></div>
     </div>
     <div class="stat-tile acc-org">
-      <div class="stat-lbl">Days to Stem Wall Complete</div>
+      <div class="stat-lbl">Days to TI Early Access</div>
       <div class="stat-num c-org" id="st4"></div>
       <div class="stat-sub"       id="st4s"></div>
     </div>
@@ -596,12 +595,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
     <div class="ms-row" id="milestones"></div>
-    <div class="variance-wrap" id="vw">
-      <div class="v-dot"></div>
-      <div class="v-lbl" id="v-lbl"></div>
-      <span class="v-sep" id="v-sep"></span>
-      <div class="v-detail" id="v-dtl"></div>
-    </div>
   </div>
 
   <!-- TWO-COLUMN: Key Dates + Work Items -->
