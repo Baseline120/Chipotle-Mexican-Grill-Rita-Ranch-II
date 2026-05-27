@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v7 | Updated: 2026-05-20 | Updated by: BC
+   v8 | Updated: 2026-05-27 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -293,8 +293,8 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      25,
-  shellDayCur:   38,
+  shellPct:      30,
+  shellDayCur:   45,
   scheduledPct:  31,
   varianceDays:  -5,    // + ahead, - behind; 0 with day 0 = pre-construction
 
@@ -304,7 +304,7 @@ const P = {
     { label:'Mobilization',          date:'4/13',  status:'done' },
     { label:'Certified\nPad',        date:'4/24',  status:'done' },
     { label:'Foundation\nComplete',  date:'5/21',  status:'done' },
-    { label:'Shell\nEnclosed',       date:'6/19',  status:'active' },
+    { label:'Shell\nEnclosed',       date:'6/24',  status:'active' },
     { label:'Site\nComplete',        date:'7/31',  status:'pending' },
     { label:'Cert of\nCompletion',   date:'8/7',   status:'pending' },
   ],
@@ -313,27 +313,26 @@ const P = {
   keyDates: [
     { label:'Footings Start',                sub:'05/01/2026',                          date:'2026-05-01', color:'#f59e0b', bold:false },
     { label:'Foundation & Ribbon Slab',      sub:'05/21/2026',                          date:'2026-05-21', color:'#7dd3fc', bold:false },
-    { label:'Building Enclosed / Watertight',  sub:'Est. 06/19/2026',                    date:'2026-06-19', color:'#7b90ab', bold:false },
+    { label:'Building Enclosed / Watertight',  sub:'Est. 06/24/2026',                    date:'2026-06-24', color:'#7b90ab', bold:false },
     { label:'TI Early Access',                  sub:'06/07/2026',                          date:'2026-06-07', color:'#7b90ab', bold:false },
     { label:'Cert of Completion',              sub:'08/07/2026',                          date:'2026-08-07', color:'#7b90ab', bold:false },
     { label:'Early Shell Delivery',            sub:'08/07/2026',                          date:'2026-08-07', color:'#CE1126', bold:true  },
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 05/18',
+  thisWeekLabel: 'Week of 05/25',
   thisWeek: [
-    { text:'Form survey',                                  tag:'Survey · 5/18',       color:'#22c55e' },
-    { text:'Foundation rebar inspection',                  tag:'Inspection · 5/18',   color:'#22c55e' },
-    { text:'Placed footing & stem wall',                   tag:'Structural · 5/19',   color:'#22c55e' },
+    { text:'Under slab plumbing',                          tag:'MEP · 5/28',          color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '05/25 – 06/05',
+  nextWeeksLabel: '06/01 – 06/12',
   nextWeeks: [
-    { text:'Sewer & electrical underground',             tag:'Utilities · 5/26',    color:'#3b82f6' },
-    { text:'Under slab plumbing & electrical',           tag:'MEP · 5/27',          color:'#3b82f6' },
-    { text:'Set steel columns',                          tag:'Structural · 5/27',   color:'#a855f7' },
-    { text:'Start wall framing',                         tag:'Structural · 6/01',   color:'#a855f7' },
+    { text:'Plumbing inspection',                        tag:'Inspection · 6/01',   color:'#22c55e' },
+    { text:'Under slab electrical',                      tag:'MEP · 6/01',          color:'#3b82f6' },
+    { text:'Floor slab prep',                            tag:'Structural · 6/04',   color:'#a855f7' },
+    { text:'Place full floor slab',                      tag:'Structural · 6/08',   color:'#a855f7' },
+    { text:'Start wall framing',                         tag:'Structural · 6/10',   color:'#a855f7' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -349,8 +348,8 @@ const P = {
       name: 'Phase 2 — Underground Utilities & Foundation',
       dates: '04/22/2026 – 05/15/2026',
       scope: 'Fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab',
-      pct: 75, badge:'b-progress', badgeLabel:'In Progress',
-      barClass:'pb-org', pctColor:'#f59e0b', note: 'Footings & stem walls placed 05/19/2026 — underslab MEP and slab next',
+      pct: 85, badge:'b-progress', badgeLabel:'In Progress',
+      barClass:'pb-org', pctColor:'#f59e0b', note: 'Underslab plumbing placed 05/28/2026 — plumbing inspection and underslab electrical next; slab pour week of 06/08',
     },
     {
       name: 'Phase 3 — Structural Frame & Building Enclosure',
@@ -358,7 +357,7 @@ const P = {
       scope: 'Steel columns, framing, roof, exterior membrane, storefront, EIFS, MEP rough-in',
       pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
       barClass:'pb-blu', pctColor:'#7dd3fc',
-      note: 'Structural framing starts 05/27/2026 — building rises above grade',
+      note: 'Wall framing starts 06/10/2026 — building rises above grade',
     },
     {
       name: 'Phase 4 — Exterior Finishes & Site Utilities',
@@ -428,16 +427,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('st1').textContent  = dCC>0 ? dCC : '—';
   document.getElementById('st1s').textContent = `Target: ${fmt(P.certCompletion)}`;
 
-  const dFR = toD('2026-05-27');
+  const dFR = toD('2026-06-10');
   document.getElementById('st2').textContent  = dFR>0 ? dFR : '—';
-  document.getElementById('st2s').textContent = 'Structural start: 05/27/2026';
+  document.getElementById('st2s').textContent = 'Framing start: 06/10/2026';
 
   document.getElementById('st3').textContent  = P.shellPct+'%';
   document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
 
-  const dCS = toD('2026-06-07');
+  const dCS = toD('2026-06-24');
   document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
-  document.getElementById('st4s').textContent = 'TI Early Access: 06/07/2026';
+  document.getElementById('st4s').textContent = 'Building Enclosed: 06/24/2026';
 
   // Progress bar
   document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
@@ -572,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="stat-sub"         id="st3s"></div>
     </div>
     <div class="stat-tile acc-org">
-      <div class="stat-lbl">Days to TI Early Access</div>
+      <div class="stat-lbl">Days to Building Enclosed</div>
       <div class="stat-num c-org" id="st4"></div>
       <div class="stat-sub"       id="st4s"></div>
     </div>
