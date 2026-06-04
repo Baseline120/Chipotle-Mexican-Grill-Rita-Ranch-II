@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v8 | Updated: 2026-05-27 | Updated by: BC
+   v9 | Updated: 2026-06-04 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -293,89 +293,91 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      30,
-  shellDayCur:   45,
-  scheduledPct:  31,
-  varianceDays:  -5,    // + ahead, - behind; 0 with day 0 = pre-construction
+  shellPct:      40,
+  shellDayCur:   52,
+  scheduledPct:  45,   // contract baseline: 52 of 116 days elapsed
+  varianceDays:  -14,  // Rev 6-2 finishes 08/21 vs 08/07 contract = 14 cal days late (variance UI inert since v7)
 
   // ── Milestones ──
   // status: 'done' | 'active' | 'pending'
   milestones: [
-    { label:'Mobilization',          date:'4/13',  status:'done' },
-    { label:'Certified\nPad',        date:'4/24',  status:'done' },
-    { label:'Foundation\nComplete',  date:'5/21',  status:'done' },
-    { label:'Shell\nEnclosed',       date:'6/24',  status:'active' },
-    { label:'Site\nComplete',        date:'7/31',  status:'pending' },
-    { label:'Cert of\nCompletion',   date:'8/7',   status:'pending' },
+    { label:'Mobilization',          date:'4/13',  status:'done'    },
+    { label:'Certified\nPad',        date:'4/24',  status:'done'    },
+    { label:'Foundation\n& Slab',    date:'6/09',  status:'active'  },
+    { label:'Shell\nEnclosed',       date:'6/24',  status:'pending' },
+    { label:'Site\nComplete',        date:'8/17',  status:'pending' },
+    { label:'Cert of\nCompletion',   date:'8/21',  status:'pending' },
   ],
 
   // ── Key dates (left column) ──
   keyDates: [
-    { label:'Footings Start',                sub:'05/01/2026',                          date:'2026-05-01', color:'#f59e0b', bold:false },
-    { label:'Foundation & Ribbon Slab',      sub:'05/21/2026',                          date:'2026-05-21', color:'#7dd3fc', bold:false },
-    { label:'Building Enclosed / Watertight',  sub:'Est. 06/24/2026',                    date:'2026-06-24', color:'#7b90ab', bold:false },
-    { label:'TI Early Access',                  sub:'06/07/2026',                          date:'2026-06-07', color:'#7b90ab', bold:false },
-    { label:'Cert of Completion',              sub:'08/07/2026',                          date:'2026-08-07', color:'#7b90ab', bold:false },
-    { label:'Early Shell Delivery',            sub:'08/07/2026',                          date:'2026-08-07', color:'#CE1126', bold:true  },
+    { label:'Slab on Grade Pour',              sub:'06/09/2026',        date:'2026-06-09', color:'#f59e0b', bold:false },
+    { label:'Building Framing Start',          sub:'06/11/2026',        date:'2026-06-11', color:'#f59e0b', bold:false },
+    { label:'Roof & Membrane Watertight',      sub:'Est. 07/08/2026',   date:'2026-07-08', color:'#7dd3fc', bold:false },
+    { label:'Meter Set / Building Power On',   sub:'Est. 08/13/2026',   date:'2026-08-13', color:'#7b90ab', bold:false },
+    { label:'Cert of Completion (Rev 6-2)',    sub:'08/21/2026',        date:'2026-08-21', color:'#ef4444', bold:false },
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 05/25',
+  thisWeekLabel: 'Week of 06/01',
   thisWeek: [
-    { text:'Under slab plumbing',                          tag:'MEP · 5/28',          color:'#22c55e' },
+    { text:'Under slab plumbing inspection',               tag:'Inspection · 6/01',   color:'#22c55e' },
+    { text:'Backfill for plumbing',                        tag:'Earthwork · 6/02',    color:'#22c55e' },
+    { text:'Under slab electrical',                        tag:'MEP · 6/03',          color:'#22c55e' },
+    { text:'Floor slab prep',                              tag:'Structural · 6/05',   color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '06/01 – 06/12',
+  nextWeeksLabel: '06/08 – 06/19',
   nextWeeks: [
-    { text:'Plumbing inspection',                        tag:'Inspection · 6/01',   color:'#22c55e' },
-    { text:'Under slab electrical',                      tag:'MEP · 6/01',          color:'#3b82f6' },
-    { text:'Floor slab prep',                            tag:'Structural · 6/04',   color:'#a855f7' },
-    { text:'Place full floor slab',                      tag:'Structural · 6/08',   color:'#a855f7' },
-    { text:'Start wall framing',                         tag:'Structural · 6/10',   color:'#a855f7' },
+    { text:'Preslab inspection (city + special)',        tag:'Inspection · 6/08',   color:'#3b82f6' },
+    { text:'Pour slab on grade (30 yd) + test',          tag:'Structural · 6/09',   color:'#a855f7' },
+    { text:'Set structural steel columns',               tag:'Structural · 6/10',   color:'#a855f7' },
+    { text:'Site wall / trash enclosure foundations',    tag:'Concrete · 6/10–6/15',color:'#3b82f6' },
+    { text:'Start building framing',                     tag:'Structural · 6/11',   color:'#a855f7' },
   ],
 
   // ── Phases (no task lists — summary only) ──
   phases: [
     {
       name: 'Phase 1 — Mobilization & Site Prep',
-      dates: '04/13/2026 – 05/08/2026',
-      scope: 'Permit, mobilize, survey, earthwork, over-excavation',
-      pct: 95, badge:'b-progress', badgeLabel:'In Progress',
+      dates: '04/13/2026 – 04/24/2026',
+      scope: 'Permit, mobilize, survey, clear & grub, over-excavation, certified pad',
+      pct: 100, badge:'b-complete', badgeLabel:'Complete',
       barClass:'pb-grn', pctColor:'#22c55e', note: 'Building pad placed and certified 04/24/2026',
     },
     {
       name: 'Phase 2 — Underground Utilities & Foundation',
-      dates: '04/22/2026 – 05/15/2026',
-      scope: 'Fire/storm/sanitary, dry utilities, footings, stems, underslab MEP, slab',
-      pct: 85, badge:'b-progress', badgeLabel:'In Progress',
-      barClass:'pb-org', pctColor:'#f59e0b', note: 'Underslab plumbing placed 05/28/2026 — plumbing inspection and underslab electrical next; slab pour week of 06/08',
+      dates: '04/27/2026 – 06/09/2026',
+      scope: 'Footings, stems, underslab plumbing/electrical, ABC, slab on grade',
+      pct: 90, badge:'b-progress', badgeLabel:'In Progress',
+      barClass:'pb-org', pctColor:'#f59e0b', note: 'Underslab plumbing + electrical complete and inspected; backfill done; ABC and slab prep complete — preslab inspection 06/08, slab pour 06/09',
     },
     {
       name: 'Phase 3 — Structural Frame & Building Enclosure',
-      dates: '04/30/2026 – 07/02/2026',
-      scope: 'Steel columns, framing, roof, exterior membrane, storefront, EIFS, MEP rough-in',
+      dates: '06/10/2026 – 07/08/2026',
+      scope: 'Steel columns, framing, HM doors, TPO roof, membrane, storefront, EIFS, brick, MEP rough-in',
       pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
       barClass:'pb-blu', pctColor:'#7dd3fc',
-      note: 'Wall framing starts 06/10/2026 — building rises above grade',
+      note: 'Steel columns 06/10, framing starts 06/11 — building rises above grade; roof/membrane watertight est. 07/08',
     },
     {
       name: 'Phase 4 — Exterior Finishes & Site Utilities',
-      dates: '06/03/2026 – 07/20/2026',
-      scope: 'Brick veneer, parapet flashing, paint, signage, SES, meter set',
+      dates: '07/20/2026 – 08/13/2026',
+      scope: 'Brick veneer, parapet flashing, exterior paint, signage, SES, TEP inspection, meter set',
       pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
       barClass:'pb-pur', pctColor:'#a855f7', note: null,
     },
     {
       name: 'Phase 5 — Hardscaping & Paving',
-      dates: '06/03/2026 – 07/31/2026',
-      scope: 'Concrete sidewalks, grading, paving, striping, landscaping',
+      dates: '07/20/2026 – 08/17/2026',
+      scope: 'Concrete sidewalks/ramps, grading & paving, striping, landscaping',
       pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
       barClass:'pb-yel', pctColor:'#eab308', note: null,
     },
     {
       name: 'Phase 6 — Final Inspections & Certification of Completion',
-      dates: '08/03/2026 – 08/07/2026',
+      dates: '08/18/2026 – 08/21/2026',
       scope: 'Building finals, final cleaning, certification of completion',
       pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
       barClass:'pb-gry', pctColor:'#94a3b8', note: null,
@@ -434,9 +436,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('st3').textContent  = P.shellPct+'%';
   document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
 
-  const dCS = toD('2026-06-24');
+  const dCS = toD('2026-07-10');
   document.getElementById('st4').textContent  = dCS>0 ? dCS : '—';
-  document.getElementById('st4s').textContent = 'Building Enclosed: 06/24/2026';
+  document.getElementById('st4s').textContent = 'Building Enclosed: 07/10/2026';
 
   // Progress bar
   document.getElementById('pb-pct').textContent  = P.shellPct + '% Complete';
