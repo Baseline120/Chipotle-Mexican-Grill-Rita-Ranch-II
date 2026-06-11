@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v9 | Updated: 2026-06-04 | Updated by: BC
+   v10 | Updated: 2026-06-10 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -294,8 +294,8 @@ const P = {
 
   // ── Progress (update weekly) ──
   shellPct:      40,
-  shellDayCur:   52,
-  scheduledPct:  45,   // contract baseline: 52 of 116 days elapsed
+  shellDayCur:   58,
+  scheduledPct:  45,   // contract baseline: 58 of 116 days elapsed
   varianceDays:  -14,  // Rev 6-2 finishes 08/21 vs 08/07 contract = 14 cal days late (variance UI inert since v7)
 
   // ── Milestones ──
@@ -303,8 +303,8 @@ const P = {
   milestones: [
     { label:'Mobilization',          date:'4/13',  status:'done'    },
     { label:'Certified\nPad',        date:'4/24',  status:'done'    },
-    { label:'Foundation\n& Slab',    date:'6/09',  status:'active'  },
-    { label:'Shell\nEnclosed',       date:'6/24',  status:'pending' },
+    { label:'Foundation\n& Slab',    date:'6/09',  status:'done'    },
+    { label:'Shell\nEnclosed',       date:'6/24',  status:'active'  },
     { label:'Site\nComplete',        date:'8/17',  status:'pending' },
     { label:'Cert of\nCompletion',   date:'8/21',  status:'pending' },
   ],
@@ -319,22 +319,21 @@ const P = {
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 06/01',
+  thisWeekLabel: 'Week of 06/08',
   thisWeek: [
-    { text:'Under slab plumbing inspection',               tag:'Inspection · 6/01',   color:'#22c55e' },
-    { text:'Backfill for plumbing',                        tag:'Earthwork · 6/02',    color:'#22c55e' },
-    { text:'Under slab electrical',                        tag:'MEP · 6/03',          color:'#22c55e' },
-    { text:'Floor slab prep',                              tag:'Structural · 6/05',   color:'#22c55e' },
+    { text:'Floor slab inspections',                       tag:'Inspection',             color:'#22c55e' },
+    { text:'Place floor slab on grade',                    tag:'Structural — Slab Pour', color:'#22c55e' },
+    { text:'Start wall framing',                           tag:'Structural — Framing',   color:'#22c55e' },
+    { text:'Installed grease interceptor',                 tag:'Plumbing',               color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '06/08 – 06/19',
+  nextWeeksLabel: '06/15 – 06/26',
   nextWeeks: [
-    { text:'Preslab inspection (city + special)',        tag:'Inspection · 6/08',   color:'#3b82f6' },
-    { text:'Pour slab on grade (30 yd) + test',          tag:'Structural · 6/09',   color:'#a855f7' },
-    { text:'Set structural steel columns',               tag:'Structural · 6/10',   color:'#a855f7' },
-    { text:'Site wall / trash enclosure foundations',    tag:'Concrete · 6/10–6/15',color:'#3b82f6' },
-    { text:'Start building framing',                     tag:'Structural · 6/11',   color:'#a855f7' },
+    { text:'Continue wall framing',                      tag:'Structural',          color:'#3b82f6' },
+    { text:'Place footing for trash enclosure',          tag:'Concrete',            color:'#3b82f6' },
+    { text:'Start light pole bases',                     tag:'Sitework',            color:'#3b82f6' },
+    { text:'Place trash enclosure footing',              tag:'Concrete',            color:'#3b82f6' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -350,16 +349,16 @@ const P = {
       name: 'Phase 2 — Underground Utilities & Foundation',
       dates: '04/27/2026 – 06/09/2026',
       scope: 'Footings, stems, underslab plumbing/electrical, ABC, slab on grade',
-      pct: 90, badge:'b-progress', badgeLabel:'In Progress',
-      barClass:'pb-org', pctColor:'#f59e0b', note: 'Underslab plumbing + electrical complete and inspected; backfill done; ABC and slab prep complete — preslab inspection 06/08, slab pour 06/09',
+      pct: 95, badge:'b-progress', badgeLabel:'In Progress',
+      barClass:'pb-org', pctColor:'#f59e0b', note: 'Slab on grade placed and inspected; grease interceptor installed',
     },
     {
       name: 'Phase 3 — Structural Frame & Building Enclosure',
       dates: '06/10/2026 – 07/08/2026',
       scope: 'Steel columns, framing, HM doors, TPO roof, membrane, storefront, EIFS, brick, MEP rough-in',
-      pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
-      barClass:'pb-blu', pctColor:'#7dd3fc',
-      note: 'Steel columns 06/10, framing starts 06/11 — building rises above grade; roof/membrane watertight est. 07/08',
+      pct: 5, badge:'b-progress', badgeLabel:'In Progress',
+      barClass:'pb-org', pctColor:'#f59e0b',
+      note: 'Wall framing underway — building rising above grade; roof/membrane watertight est. 07/08',
     },
     {
       name: 'Phase 4 — Exterior Finishes & Site Utilities',
