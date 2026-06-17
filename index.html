@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v10 | Updated: 2026-06-10 | Updated by: BC
+   v11 | Updated: 2026-06-17 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -293,7 +293,7 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      40,
+  shellPct:      45,
   shellDayCur:   58,
   scheduledPct:  45,   // contract baseline: 58 of 116 days elapsed
   varianceDays:  -14,  // Rev 6-2 finishes 08/21 vs 08/07 contract = 14 cal days late (variance UI inert since v7)
@@ -321,19 +321,20 @@ const P = {
   // ── This week ──
   thisWeekLabel: 'Week of 06/08',
   thisWeek: [
-    { text:'Floor slab inspections',                       tag:'Inspection',             color:'#22c55e' },
-    { text:'Place floor slab on grade',                    tag:'Structural — Slab Pour', color:'#22c55e' },
-    { text:'Start wall framing',                           tag:'Structural — Framing',   color:'#22c55e' },
-    { text:'Installed grease interceptor',                 tag:'Plumbing',               color:'#22c55e' },
+    { text:'Place footing for trash enclosure',           tag:'Concrete',               color:'#22c55e' },
+    { text:'Continuing wall framing',                      tag:'Structural — Framing',   color:'#22c55e' },
+    { text:'Grease interceptor inspection',                tag:'Plumbing — Inspection',  color:'#22c55e' },
+    { text:'Main sewer connection started',                tag:'Plumbing — Sitework',    color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
   nextWeeksLabel: '06/15 – 06/26',
   nextWeeks: [
-    { text:'Continue wall framing',                      tag:'Structural',          color:'#3b82f6' },
-    { text:'Place footing for trash enclosure',          tag:'Concrete',            color:'#3b82f6' },
+    { text:'Continue framing',                           tag:'Structural',          color:'#3b82f6' },
+    { text:'Trash enclosure walls',                      tag:'Concrete / Masonry',  color:'#3b82f6' },
     { text:'Start light pole bases',                     tag:'Sitework',            color:'#3b82f6' },
-    { text:'Place trash enclosure footing',              tag:'Concrete',            color:'#3b82f6' },
+    { text:'Walls dried in',                             tag:'Enclosure',           color:'#3b82f6' },
+    { text:'Roof penetrations',                          tag:'Roofing',             color:'#3b82f6' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -342,7 +343,7 @@ const P = {
       name: 'Phase 1 — Mobilization & Site Prep',
       dates: '04/13/2026 – 04/24/2026',
       scope: 'Permit, mobilize, survey, clear & grub, over-excavation, certified pad',
-      pct: 100, badge:'b-complete', badgeLabel:'Complete',
+      pct: 95, badge:'b-complete', badgeLabel:'Complete',
       barClass:'pb-grn', pctColor:'#22c55e', note: 'Building pad placed and certified 04/24/2026',
     },
     {
@@ -356,7 +357,7 @@ const P = {
       name: 'Phase 3 — Structural Frame & Building Enclosure',
       dates: '06/10/2026 – 07/08/2026',
       scope: 'Steel columns, framing, HM doors, TPO roof, membrane, storefront, EIFS, brick, MEP rough-in',
-      pct: 5, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 20, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-org', pctColor:'#f59e0b',
       note: 'Wall framing underway — building rising above grade; roof/membrane watertight est. 07/08',
     },
@@ -428,9 +429,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('st1').textContent  = dCC>0 ? dCC : '—';
   document.getElementById('st1s').textContent = `Target: ${fmt(P.certCompletion)}`;
 
-  const dFR = toD('2026-06-10');
+  const dFR = toD('2026-07-08');
   document.getElementById('st2').textContent  = dFR>0 ? dFR : '—';
-  document.getElementById('st2s').textContent = 'Framing start: 06/10/2026';
+  document.getElementById('st2s').textContent = 'Roof dry-in: 07/08/2026';
 
   document.getElementById('st3').textContent  = P.shellPct+'%';
   document.getElementById('st3s').textContent = `Day ${P.shellDayCur} of ${P.contractDays}`;
@@ -562,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="stat-sub"        id="st1s"></div>
     </div>
     <div class="stat-tile acc-blue">
-      <div class="stat-lbl">Days to Framing Start</div>
+      <div class="stat-lbl">Days to Roof Dry-In</div>
       <div class="stat-num c-blue" id="st2"></div>
       <div class="stat-sub"        id="st2s"></div>
     </div>
