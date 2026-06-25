@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v11 | Updated: 2026-06-17 | Updated by: BC
+   v12 | Updated: 2026-06-25 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -293,7 +293,7 @@ const P = {
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      45,
+  shellPct:      55,
   shellDayCur:   58,
   scheduledPct:  45,   // contract baseline: 58 of 116 days elapsed
   varianceDays:  -14,  // Rev 6-2 finishes 08/21 vs 08/07 contract = 14 cal days late (variance UI inert since v7)
@@ -321,20 +321,20 @@ const P = {
   // ── This week ──
   thisWeekLabel: 'Week of 06/08',
   thisWeek: [
-    { text:'Place footing for trash enclosure',           tag:'Concrete',               color:'#22c55e' },
-    { text:'Continuing wall framing',                      tag:'Structural — Framing',   color:'#22c55e' },
-    { text:'Grease interceptor inspection',                tag:'Plumbing — Inspection',  color:'#22c55e' },
-    { text:'Main sewer connection started',                tag:'Plumbing — Sitework',    color:'#22c55e' },
+    { text:'Wood framing',                                 tag:'Structural — Framing',   color:'#22c55e' },
+    { text:'Roof curbs and drains installed',              tag:'Roofing',                color:'#22c55e' },
+    { text:'Grease interceptor',                           tag:'Plumbing',               color:'#22c55e' },
+    { text:'Main sewer connection',                        tag:'Plumbing — Sitework',    color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
   nextWeeksLabel: '06/15 – 06/26',
   nextWeeks: [
-    { text:'Continue framing',                           tag:'Structural',          color:'#3b82f6' },
-    { text:'Trash enclosure walls',                      tag:'Concrete / Masonry',  color:'#3b82f6' },
-    { text:'Start light pole bases',                     tag:'Sitework',            color:'#3b82f6' },
+    { text:'Interior metal stud framing',                tag:'Structural',          color:'#3b82f6' },
     { text:'Walls dried in',                             tag:'Enclosure',           color:'#3b82f6' },
-    { text:'Roof penetrations',                          tag:'Roofing',             color:'#3b82f6' },
+    { text:'Roof installation',                          tag:'Roofing',             color:'#3b82f6' },
+    { text:'Site electrical & gas line',                 tag:'Sitework — MEP',      color:'#3b82f6' },
+    { text:'Light pole bases',                           tag:'Sitework',            color:'#3b82f6' },
   ],
 
   // ── Phases (no task lists — summary only) ──
@@ -357,7 +357,7 @@ const P = {
       name: 'Phase 3 — Structural Frame & Building Enclosure',
       dates: '06/10/2026 – 07/08/2026',
       scope: 'Steel columns, framing, HM doors, TPO roof, membrane, storefront, EIFS, brick, MEP rough-in',
-      pct: 20, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 50, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-org', pctColor:'#f59e0b',
       note: 'Wall framing underway — building rising above grade; roof/membrane watertight est. 07/08',
     },
