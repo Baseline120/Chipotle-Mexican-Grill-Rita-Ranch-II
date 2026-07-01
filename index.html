@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <style>
 /* ============================================================
-   v12 | Updated: 2026-06-25 | Updated by: BC
+   v13 | Updated: 2026-07-01 | Updated by: BC
    EDIT ONLY THE PROJECT {} CONFIG BLOCK.
    DO NOT TOUCH ANYTHING BELOW // RENDER ENGINE
 ============================================================ */
@@ -287,15 +287,15 @@ const P = {
   totalWeeks:    26,
 
   contractStart: '2026-04-13',
-  certCompletion:'2026-08-07',
+  certCompletion:'2026-08-27',
   contractDays:  116,
   ldRate:        '$1,300/day',
   tiAllowance:   '$60,815',
 
   // ── Progress (update weekly) ──
-  shellPct:      55,
-  shellDayCur:   58,
-  scheduledPct:  45,   // contract baseline: 58 of 116 days elapsed
+  shellPct:      60,
+  shellDayCur:   80,
+  scheduledPct:  45,   // contract baseline: 80 of 116 days elapsed
   varianceDays:  -14,  // Rev 6-2 finishes 08/21 vs 08/07 contract = 14 cal days late (variance UI inert since v7)
 
   // ── Milestones ──
@@ -315,25 +315,25 @@ const P = {
     { label:'Building Framing Start',          sub:'06/11/2026',        date:'2026-06-11', color:'#f59e0b', bold:false },
     { label:'Roof & Membrane Watertight',      sub:'Est. 07/08/2026',   date:'2026-07-08', color:'#7dd3fc', bold:false },
     { label:'Meter Set / Building Power On',   sub:'Est. 08/13/2026',   date:'2026-08-13', color:'#7b90ab', bold:false },
-    { label:'Cert of Completion (Rev 6-2)',    sub:'08/21/2026',        date:'2026-08-21', color:'#ef4444', bold:false },
+    { label:'Cert of Completion (Rev 6-2)',    sub:'08/27/2026',        date:'2026-08-27', color:'#ef4444', bold:false },
   ],
 
   // ── This week ──
-  thisWeekLabel: 'Week of 06/08',
+  thisWeekLabel: 'Week of 06/29',
   thisWeek: [
-    { text:'Wood framing',                                 tag:'Structural — Framing',   color:'#22c55e' },
-    { text:'Roof curbs and drains installed',              tag:'Roofing',                color:'#22c55e' },
-    { text:'Grease interceptor',                           tag:'Plumbing',               color:'#22c55e' },
-    { text:'Main sewer connection',                        tag:'Plumbing — Sitework',    color:'#22c55e' },
+    { text:'Metal framing',                                tag:'Structural — Framing',   color:'#22c55e' },
+    { text:'Window & door frames installed',               tag:'Enclosure',              color:'#22c55e' },
+    { text:'Wall dry-in started',                          tag:'Enclosure',              color:'#22c55e' },
+    { text:'HVAC rough-in',                                tag:'MEP — Mechanical',       color:'#22c55e' },
   ],
 
   // ── Next 2 weeks ──
-  nextWeeksLabel: '06/15 – 06/26',
+  nextWeeksLabel: '07/06 – 07/17',
   nextWeeks: [
     { text:'Interior metal stud framing',                tag:'Structural',          color:'#3b82f6' },
     { text:'Walls dried in',                             tag:'Enclosure',           color:'#3b82f6' },
     { text:'Roof installation',                          tag:'Roofing',             color:'#3b82f6' },
-    { text:'Site electrical & gas line',                 tag:'Sitework — MEP',      color:'#3b82f6' },
+    { text:'Trash enclosure',                            tag:'Sitework',            color:'#3b82f6' },
     { text:'Light pole bases',                           tag:'Sitework',            color:'#3b82f6' },
   ],
 
@@ -357,9 +357,9 @@ const P = {
       name: 'Phase 3 — Structural Frame & Building Enclosure',
       dates: '06/10/2026 – 07/08/2026',
       scope: 'Steel columns, framing, HM doors, TPO roof, membrane, storefront, EIFS, brick, MEP rough-in',
-      pct: 50, badge:'b-progress', badgeLabel:'In Progress',
+      pct: 65, badge:'b-progress', badgeLabel:'In Progress',
       barClass:'pb-org', pctColor:'#f59e0b',
-      note: 'Wall framing underway — building rising above grade; roof/membrane watertight est. 07/08',
+      note: 'Wood framing complete; metal framing, window/door frames, wall dry-in and HVAC rough-in underway; roof/membrane watertight est. 07/08',
     },
     {
       name: 'Phase 4 — Exterior Finishes & Site Utilities',
@@ -377,7 +377,7 @@ const P = {
     },
     {
       name: 'Phase 6 — Final Inspections & Certification of Completion',
-      dates: '08/18/2026 – 08/21/2026',
+      dates: '08/24/2026 – 08/27/2026',
       scope: 'Building finals, final cleaning, certification of completion',
       pct: 0, badge:'b-notstart', badgeLabel:'Not Started',
       barClass:'pb-gry', pctColor:'#94a3b8', note: null,
@@ -388,7 +388,7 @@ const P = {
   projectInfo: [
     { l1:'Project',                 v1:'Chipotle Mexican Grill — Rita Ranch II', l2:'Shell Contract Duration', v2:'116 days (04/13/2026 – 08/07/2026)', h2:false },
     { l1:'Location',                v1:'Houghton Town Center, Tucson, Arizona',  l2:'TI Early Access',          v2:'06/07/2026',                        h2:false },
-    { l1:'Store No.',               v1:'02-6133',                                l2:'Early Shell Delivery Date', v2:'August 7, 2026',                    h2:true  },
+    { l1:'Store No.',               v1:'02-6133',                                l2:'Early Shell Delivery Date', v2:'August 27, 2026',                    h2:true  },
     { l1:'Landlord',                v1:'Old Vail AZ Development Group LLC',      l2:'Shell Delivery Date',       v2:'December 14, 2026',                 h2:false },
   ],
 
